@@ -39,8 +39,10 @@ public class Loginform {
         // UI styling
         Username.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         Password.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        prijaviSeBtn.setBorder(BorderFactory.createEmptyBorder(13, 13, 13, 13));
         prijaviSeBtn.setBackground(new Color(69, 104, 130));
         prijaviSeBtn.setForeground(Color.WHITE);
+        registarBtn.setBorder(BorderFactory.createEmptyBorder(13, 13, 13,13));
         registarBtn.setBackground(new Color(69, 104, 130));
         registarBtn.setForeground(Color.WHITE);
     }
