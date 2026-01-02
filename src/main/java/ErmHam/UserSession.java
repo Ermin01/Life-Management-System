@@ -18,3 +18,5 @@ public class UserSession {
         loggedUser = null;
     }
 }
+
+//adminPlaceholder

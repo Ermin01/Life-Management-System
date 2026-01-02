@@ -71,55 +71,32 @@ public class DodajPlaniranjeObroka extends  JFrame {
         obrisiObrokbutton.addActionListener(e-> obrisiObrok());
 
 
-        ocistiButton.setText("Očisti");
-        ocistiButton.setFont(new Font("Segoe UI", Font.BOLD, 16));
-        ocistiButton.setBackground(new Color(0,120,208));
-        ocistiButton.setForeground(Color.WHITE);
-        ocistiButton.setOpaque(true);
-        ocistiButton.setContentAreaFilled(true);
-        ocistiButton.setFocusPainted(false);
-        ocistiButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        ocistiButton.setMargin(new Insets(12, 30, 12, 30));
-        ocistiButton.setBorder(BorderFactory.createLineBorder(new Color(0,120,208), 2, true));
 
 
-        btnObroka.setText("Sačuvaj");
-        btnObroka.setFont(new Font("Segoe UI", Font.BOLD, 16));
-        btnObroka.setBackground(new Color(0,120,208));
+        btnObroka.setBorder(BorderFactory.createEmptyBorder(13, 13, 13,13));
+        btnObroka.setBackground(new Color(69, 104, 130));
         btnObroka.setForeground(Color.WHITE);
-        btnObroka.setOpaque(true);
-        btnObroka.setContentAreaFilled(true);
-        btnObroka.setFocusPainted(false);
-        btnObroka.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        btnObroka.setMargin(new Insets(12, 30, 12, 30));
-        btnObroka.setBorder(BorderFactory.createLineBorder(new Color(0,120,208), 2, true));
 
-
-
-
-        obrisiObrokbutton.setText("Obriši");
-        obrisiObrokbutton.setFont(new Font("Segoe UI", Font.BOLD, 16));
-        obrisiObrokbutton.setBackground(new Color(0,120,208));
+        obrisiObrokbutton.setBorder(BorderFactory.createEmptyBorder(13, 13, 13,13));
+        obrisiObrokbutton.setBackground(new Color(69, 104, 130));
         obrisiObrokbutton.setForeground(Color.WHITE);
-        obrisiObrokbutton.setOpaque(true);
-        obrisiObrokbutton.setContentAreaFilled(true);
-        obrisiObrokbutton.setFocusPainted(false);
-        obrisiObrokbutton.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        obrisiObrokbutton.setMargin(new Insets(12, 30, 12, 30));
-        obrisiObrokbutton.setBorder(BorderFactory.createLineBorder(new Color(0,120,208), 2, true));
 
+        ocistiButton.setBorder(BorderFactory.createEmptyBorder(13, 13, 13,13));
+        ocistiButton.setBackground(new Color(69, 104, 130));
+        ocistiButton.setForeground(Color.WHITE);
 
-
-        urediObrok.setText("Uredi");
-        urediObrok.setFont(new Font("Segoe UI", Font.BOLD, 16));
-        urediObrok.setBackground(new Color(0,120,208));
+        urediObrok.setBorder(BorderFactory.createEmptyBorder(13, 13, 13,13));
+        urediObrok.setBackground(new Color(69, 104, 130));
         urediObrok.setForeground(Color.WHITE);
-        urediObrok.setOpaque(true);
-        urediObrok.setContentAreaFilled(true);
-        urediObrok.setFocusPainted(false);
-        urediObrok.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        urediObrok.setMargin(new Insets(12, 30, 12, 30));
-        urediObrok.setBorder(BorderFactory.createLineBorder(new Color(0,120,208), 2, true));
+
+        nazivObroka.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+        comboBoxtipObroka.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+        KategorijapracanjeNavika.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+        kalorije.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+        proteini.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+
+
+
     }
 
     public void sacuvajObrok(){

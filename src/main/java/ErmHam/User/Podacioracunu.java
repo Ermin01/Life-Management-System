@@ -9,6 +9,7 @@ import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class Podacioracunu extends JFrame {
 
@@ -18,18 +19,32 @@ public class Podacioracunu extends JFrame {
     private JPasswordField passwordUser;
     private JButton spremiPromjenuButton;
     private JButton nazadButton;
-    private JLabel Korisnik;
 
     public Podacioracunu() {
 
         setTitle("Podaci o računu");
         setContentPane(GlavniPrPodacioracunu);
-        setSize(550, 250);
+        setSize(550, 280);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         ucitajPodatke();
         Akcija();
+
+
+        userName.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+        Role.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+        passwordUser.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+
+        spremiPromjenuButton.setBorder(BorderFactory.createEmptyBorder(13, 13, 13,13));
+        spremiPromjenuButton.setBackground(new Color(69, 104, 130));
+        spremiPromjenuButton.setForeground(Color.WHITE);
+
+        nazadButton.setBorder(BorderFactory.createEmptyBorder(13, 13, 13,13));
+        nazadButton.setBackground(new Color(69, 104, 130));
+        nazadButton.setForeground(Color.WHITE);
+
     }
 
     private void ucitajPodatke() {

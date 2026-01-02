@@ -5,6 +5,8 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
 import javax.swing.*;
+import java.awt.*;
+
 public class DodajKorisnika extends JFrame {
 
     private JPanel glavniProzor;
@@ -19,6 +21,7 @@ public class DodajKorisnika extends JFrame {
         setContentPane(glavniProzor);
         setSize(500, 400);
         setLocationRelativeTo(null);
+        setResizable(false);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         comboBoxRole.addItem("Odaberi");
@@ -27,6 +30,14 @@ public class DodajKorisnika extends JFrame {
 
         sacuvajBtn.addActionListener(e -> sacuvajKorisnika());
 
+
+
+        sacuvajBtn.setBorder(BorderFactory.createEmptyBorder(13, 13, 13,13));
+        sacuvajBtn.setBackground(new Color(69, 104, 130));
+        sacuvajBtn.setForeground(Color.WHITE);
+
+        userName.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+        userPassword.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
     }
 
 

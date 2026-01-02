@@ -55,18 +55,20 @@ public class Pracenjefinancija extends JFrame {
         katagroijaBox.addItem("Računi");
         katagroijaBox.addItem("Ostalo");
 
+        SaldoField.setEditable(false); // 🔒 samo prikaz
+
         sacuvajBtn.addActionListener(e -> dodajTransakciju());
+        OcistiBtn.addActionListener(e -> clearForm());
 
         applyRoleView();
         loadFromDB();
         loadTable();
         styleTable();
         popuniField();
-        izracunajSaldo();
         prikaziSaldo();
-
-        OcistiBtn.addActionListener(e -> clearForm());
     }
+
+    // ---------------- UI ----------------
 
     private void styleTable() {
         pregledTableFinacija.setRowHeight(28);
@@ -82,11 +84,12 @@ public class Pracenjefinancija extends JFrame {
             Iznos.setVisible(false);
             Opis.setVisible(false);
             datum.setVisible(false);
-            SaldoField.setVisible(false);
             sacuvajBtn.setVisible(false);
             exportPDF.setVisible(false);
         }
     }
+
+    // ---------------- DB ----------------
 
     private void loadFromDB() {
         MongoDatabase db = Bazapodataka.getDatabase();
@@ -95,50 +98,44 @@ public class Pracenjefinancija extends JFrame {
         transakcije.clear();
 
         for (Document d : col.find()) {
-
-            Number iznosNum = d.get("iznos", Number.class);
-            Number saldoNum = d.get("saldo", Number.class);
-
-            double iznos = iznosNum != null ? iznosNum.doubleValue() : 0;
-            double saldo = saldoNum != null ? saldoNum.doubleValue() : 0;
-
             transakcije.add(new Transakcija(
                     d.getString("tip"),
                     d.getString("kategorija"),
-                    iznos,
+                    d.getDouble("iznos"),
                     d.getString("opis"),
-                    saldo
+                    0 // saldo se NE uzima iz baze
             ));
         }
     }
 
+    // ---------------- TABLE ----------------
 
-        private void loadTable() {
-
+    private void loadTable() {
         DefaultTableModel model = new DefaultTableModel();
-        model.addColumn("Tip transakcije");
+        model.addColumn("Tip");
         model.addColumn("Kategorija");
         model.addColumn("Iznos");
         model.addColumn("Opis");
 
-         for (Transakcija t : transakcije) {
-               model.addRow(new Object[]{
-                t.getTipTransakcijeBox(),
+        for (Transakcija t : transakcije) {
+            model.addRow(new Object[]{
+                    t.getTipTransakcijeBox(),
                     t.getKategorijaBox(),
                     t.getIznos(),
-                    t.getOpis(),
-        });
-       }
-          pregledTableFinacija.setModel(model);
+                    t.getOpis()
+            });
+        }
+
+        pregledTableFinacija.setModel(model);
     }
 
+    // ---------------- LOGIKA ----------------
 
     private void dodajTransakciju() {
 
         if (tipTransakcijeBox.getSelectedIndex() == 0 ||
                 katagroijaBox.getSelectedIndex() == 0 ||
                 Iznos.getText().isEmpty() ||
-                SaldoField.getText().isEmpty() ||
                 Opis.getText().isEmpty()) {
 
             JOptionPane.showMessageDialog(this, "Popuni sva polja!");
@@ -147,7 +144,6 @@ public class Pracenjefinancija extends JFrame {
 
         try {
             double iznos = Double.parseDouble(Iznos.getText());
-            double saldo = Double.parseDouble(SaldoField.getText());
 
             MongoDatabase db = Bazapodataka.getDatabase();
             MongoCollection<Document> col = db.getCollection("transakcije");
@@ -157,33 +153,18 @@ public class Pracenjefinancija extends JFrame {
                     .append("kategorija", katagroijaBox.getSelectedItem())
                     .append("iznos", iznos)
                     .append("opis", Opis.getText())
-                    .append("saldo", saldo)
                     .append("datum", datum.getText())
             );
 
             loadFromDB();
             loadTable();
+            prikaziSaldo();
             clearForm();
 
         } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "Iznos i saldo moraju biti brojevi!");
+            JOptionPane.showMessageDialog(this, "Iznos mora biti broj!");
         }
     }
-
-    public void popuniField(){
-        pregledTableFinacija.getSelectionModel().addListSelectionListener(e ->{
-            if (e.getValueIsAdjusting()) return;
-
-            int row = pregledTableFinacija.getSelectedRow();
-            if (row == -1) return;
-
-            tipTransakcijeBox.setSelectedItem(pregledTableFinacija.getValueAt(row, 0).toString());
-            katagroijaBox.setSelectedItem(pregledTableFinacija.getValueAt(row, 1).toString());
-            Iznos.setText(pregledTableFinacija.getValueAt(row,  2).toString());
-            Opis.setText(pregledTableFinacija.getValueAt(row,  3).toString());
-        });
-    }
-
 
     private double izracunajSaldo() {
         double saldo = 0;
@@ -191,18 +172,32 @@ public class Pracenjefinancija extends JFrame {
         for (Transakcija t : transakcije) {
             if ("Prihodi".equals(t.getTipTransakcijeBox())) {
                 saldo += t.getIznos();
-            } else if ("Rashodi".equals(t.getTipTransakcijeBox())) {
+            } else {
                 saldo -= t.getIznos();
             }
         }
-
         return saldo;
     }
+
     private void prikaziSaldo() {
-        double saldo = izracunajSaldo();
-        SaldoField.setText(String.format("%.2f", saldo));
+        SaldoField.setText(String.format("%.2f", izracunajSaldo()));
     }
 
+    // ---------------- HELPERS ----------------
+
+    private void popuniField() {
+        pregledTableFinacija.getSelectionModel().addListSelectionListener(e -> {
+            if (e.getValueIsAdjusting()) return;
+
+            int row = pregledTableFinacija.getSelectedRow();
+            if (row == -1) return;
+
+            tipTransakcijeBox.setSelectedItem(pregledTableFinacija.getValueAt(row, 0));
+            katagroijaBox.setSelectedItem(pregledTableFinacija.getValueAt(row, 1));
+            Iznos.setText(pregledTableFinacija.getValueAt(row, 2).toString());
+            Opis.setText(pregledTableFinacija.getValueAt(row, 3).toString());
+        });
+    }
 
     private void clearForm() {
         tipTransakcijeBox.setSelectedIndex(0);
@@ -210,6 +205,10 @@ public class Pracenjefinancija extends JFrame {
         Iznos.setText("");
         Opis.setText("");
         datum.setText("");
-        SaldoField.setText("");
     }
+
 }
+
+//git add .
+//git commit -m "Promjene na login formi"
+//git push

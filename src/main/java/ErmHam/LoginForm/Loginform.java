@@ -9,6 +9,11 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
 
+import javax.imageio.ImageIO;
+import java.io.File;
+import java.io.IOException;
+
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -19,6 +24,7 @@ public class Loginform {
     private JButton prijaviSeBtn;
     private JButton registarBtn;
     private JPasswordField Password;
+    private JPanel leftPanel;
     private JPanel Loginprozor;
 
     private enum Mode { LOGIN, REGISTER }
@@ -45,6 +51,29 @@ public class Loginform {
         registarBtn.setBorder(BorderFactory.createEmptyBorder(13, 13, 13,13));
         registarBtn.setBackground(new Color(69, 104, 130));
         registarBtn.setForeground(Color.WHITE);
+
+        try {
+            Image bgImage = ImageIO.read(new File(
+                    "C:\\Users\\Public\\Documents\\Life Management System\\src\\main\\java\\ErmHam\\Img\\Logoslika.png"
+            ));
+
+            leftPanel.setLayout(new BorderLayout());
+
+            JLabel bgLabel = new JLabel() {
+                @Override
+                protected void paintComponent(Graphics g) {
+                    super.paintComponent(g);
+                    g.drawImage(bgImage, 0, 0, getWidth(), getHeight(), this);
+                }
+            };
+
+            leftPanel.add(bgLabel, BorderLayout.CENTER);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
     }
 
     public JPanel Glavniprozor() {
@@ -127,4 +156,7 @@ public class Loginform {
             registarBtn.setText("Registar");
         }
     }
+
+
+
 }

@@ -12,6 +12,7 @@ public class Main {
         frame.setSize(900, 550);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
+        frame.setResizable(false);
     }
 }
 

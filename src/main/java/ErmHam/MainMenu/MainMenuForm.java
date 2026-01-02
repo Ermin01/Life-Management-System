@@ -14,10 +14,12 @@ import java.awt.*;
 public class MainMenuForm {
 
     private JPanel GlavniProzor;
+    private JPanel adminPlaceholder;
+
     private JButton dodajKorisnikaButton;
     private JButton PracenjefinancijaButton;
     private JButton pregledKorisnikaButton;
-    private JButton Pracenjenavika;
+    private JButton PracenjenavikaObroka;
     private JButton planiranjeUcenjaButton;
     private JButton podaciORacunuButton;
     private JButton odjaviseButton;
@@ -44,8 +46,8 @@ public class MainMenuForm {
         PracenjefinancijaButton.setBackground(new Color(69, 104, 130));
         PracenjefinancijaButton.setBorder(BorderFactory.createEmptyBorder(20, 40, 20, 40));
 
-        Pracenjenavika.setBackground(new Color(69, 104, 130));
-        Pracenjenavika.setBorder(BorderFactory.createEmptyBorder(20, 40, 20, 40));
+        PracenjenavikaObroka.setBackground(new Color(69, 104, 130));
+        PracenjenavikaObroka.setBorder(BorderFactory.createEmptyBorder(20, 40, 20, 40));
 
         planiranjeUcenjaButton.setBackground(new Color(69, 104, 130));
         planiranjeUcenjaButton.setBorder(BorderFactory.createEmptyBorder(20, 40, 20, 40));
@@ -54,19 +56,40 @@ public class MainMenuForm {
         odjaviseButton.setBorder(BorderFactory.createEmptyBorder(20, 40, 20, 40));
     }
 
-    private void applyRolePermissions() {
-        if ("SUPERADMIN".equals(role)) {
-            dodajKorisnikaButton.setVisible(true);
-            pregledKorisnikaButton.setVisible(true);
-            podaciORacunuButton.setVisible(true);
-            PracenjefinancijaButton.setVisible(true);
-        } else {
-            podaciORacunuButton.setVisible(true);
-            PracenjefinancijaButton.setVisible(true);
-            dodajKorisnikaButton.setVisible(false);
-            pregledKorisnikaButton.setVisible(false);
-        }
+    private JPanel wrap(JButton button) {
+        JPanel p = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 80));
+        p.setOpaque(false); // NE dira background
+        p.add(button);
+        return p;
     }
+
+    private void applyRolePermissions() {
+
+        adminPlaceholder.removeAll();
+        adminPlaceholder.setLayout(new GridLayout(2, 3, 5, 5));
+
+        if ("SUPERADMIN".equals(role)) {
+
+            adminPlaceholder.add(wrap(dodajKorisnikaButton));
+            adminPlaceholder.add(wrap(pregledKorisnikaButton));
+            adminPlaceholder.add(wrap(podaciORacunuButton));
+
+            adminPlaceholder.add(wrap(PracenjefinancijaButton));
+            adminPlaceholder.add(wrap(PracenjenavikaObroka));
+            adminPlaceholder.add(wrap(planiranjeUcenjaButton));
+
+        } else { // USER
+
+            adminPlaceholder.add(wrap(podaciORacunuButton));
+            adminPlaceholder.add(wrap(PracenjefinancijaButton));
+            adminPlaceholder.add(wrap(PracenjenavikaObroka));
+            adminPlaceholder.add(wrap(planiranjeUcenjaButton));
+        }
+
+        adminPlaceholder.revalidate();
+        adminPlaceholder.repaint();
+    }
+
 
     public void Akcije() {
         dodajKorisnikaButton.addActionListener(e -> {
@@ -81,12 +104,19 @@ public class MainMenuForm {
         PracenjefinancijaButton.addActionListener(e -> {
             new Pracenjefinancija(role).setVisible(true);
         });
-        Pracenjenavika.addActionListener(e -> {
-            new DodajPlaniranjeObroka().setVisible(true);
+        PracenjenavikaObroka.addActionListener(e -> {
+
+            if ("SUPERADMIN".equals(role)) {
+                new DodajPlaniranjeObroka().setVisible(true);
+            } else {
+                new ErmHam.User.SedmicniplanerObrokaUser().setVisible(true);
+            }
+
         });
         odjaviseButton.addActionListener(e -> odjaviSe());
-            //ovdje mora se napraviti logika
+
     }
+
 
 
 //    DESGIN BUTTON-NA
