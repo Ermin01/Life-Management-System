@@ -17,7 +17,7 @@ import java.io.IOException;
 import javax.swing.*;
 import java.awt.*;
 
-public class Loginform {
+public class Loginform  extends JFrame{
 
     private JPanel Glavniprozor;
     private JTextField Username;
@@ -72,6 +72,8 @@ public class Loginform {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+
 
 
     }

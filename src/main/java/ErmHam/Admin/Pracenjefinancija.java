@@ -66,6 +66,23 @@ public class Pracenjefinancija extends JFrame {
         styleTable();
         popuniField();
         prikaziSaldo();
+
+
+        sacuvajBtn.setBorder(BorderFactory.createEmptyBorder(13, 13, 13,13));
+        sacuvajBtn.setBackground(new Color(69, 104, 130));
+        sacuvajBtn.setForeground(Color.WHITE);
+
+        OcistiBtn.setBorder(BorderFactory.createEmptyBorder(13, 13, 13,13));
+        OcistiBtn.setBackground(new Color(69, 104, 130));
+        OcistiBtn.setForeground(Color.WHITE);
+
+        exportPDF.setBorder(BorderFactory.createEmptyBorder(13, 13, 13,13));
+        exportPDF.setBackground(new Color(69, 104, 130));
+        exportPDF.setForeground(Color.WHITE);
+
+
+
+
     }
 
     // ---------------- UI ----------------
@@ -86,10 +103,16 @@ public class Pracenjefinancija extends JFrame {
             datum.setVisible(false);
             sacuvajBtn.setVisible(false);
             exportPDF.setVisible(false);
+            tipTransakcije.setText("");
+            kategorija.setText("");
+            iznos.setText("");
+            opis.setText("");
+            datumlabel.setText("");
+            datum.setVisible(false);
+            OcistiBtn.setVisible(false);
         }
     }
 
-    // ---------------- DB ----------------
 
     private void loadFromDB() {
         MongoDatabase db = Bazapodataka.getDatabase();
@@ -108,7 +131,6 @@ public class Pracenjefinancija extends JFrame {
         }
     }
 
-    // ---------------- TABLE ----------------
 
     private void loadTable() {
         DefaultTableModel model = new DefaultTableModel();
@@ -183,7 +205,7 @@ public class Pracenjefinancija extends JFrame {
         SaldoField.setText(String.format("%.2f", izracunajSaldo()));
     }
 
-    // ---------------- HELPERS ----------------
+
 
     private void popuniField() {
         pregledTableFinacija.getSelectionModel().addListSelectionListener(e -> {

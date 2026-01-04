@@ -56,7 +56,7 @@
                   <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <font name="Fira Code" size="14"/>
+                  <font name="Fira Code" size="16"/>
                   <foreground color="-855041"/>
                   <text value="Korisnicka lozinka:"/>
                 </properties>
@@ -66,7 +66,7 @@
                   <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <font name="JetBrains Mono" size="14"/>
+                  <font name="JetBrains Mono" size="16"/>
                   <foreground color="-855041"/>
                   <text value="Korisnicko ime:"/>
                 </properties>
@@ -86,7 +86,7 @@
                       <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
-                      <font name="JetBrains Mono" size="12" style="1"/>
+                      <font name="JetBrains Mono" size="16" style="1"/>
                       <foreground color="-855041"/>
                       <text value="Prijavi se"/>
                     </properties>
@@ -96,7 +96,7 @@
                       <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
-                      <font name="JetBrains Mono" size="12" style="1"/>
+                      <font name="JetBrains Mono" size="16" style="1"/>
                       <foreground color="-855041"/>
                       <text value="Registar"/>
                     </properties>

@@ -2,6 +2,7 @@ package ErmHam.User;
 
 import ErmHam.Database.Bazapodataka;
 import ErmHam.UserSession;
+
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.UpdateOptions;
@@ -11,6 +12,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.FileOutputStream;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -18,30 +20,22 @@ public class SedmicniplanerObrokaUser extends JFrame {
 
     private JPanel SedmicnipanelGlava;
     private JButton sacuvajButton;
-    private JButton Clearbutton;
-    private JButton updateButton;
-
-    // ====== PONEDJELJAK ======
-    private JComboBox pon_uzina, pon_dorucak, pon_rucak, pon_vecera;
-
-    // ====== UTORAK ======
-    private JComboBox uto_uzina, uto_dorucak, uto_rucak, uto_vecera;
-
-    // ====== SRIJEDA ======
-    private JComboBox sri_uzina, sri_dorucak, sri_rucak, sri_vecera;
-
-    // ====== ČETVRTAK ======
-    private JComboBox cet_uzina, cet_dorucak, cet_rucak, cet_vecera;
-
-    // ====== PETAK ======
-    private JComboBox pet_uzina, pet_dorucak, pet_rucak, pet_vecera;
-
-    // ====== SUBOTA ======
-    private JComboBox sub_uzina, sub_dorucak, sub_rucak, sub_vecera;
-
-    // ====== NEDELJA ======
-    private JComboBox ned_uzina, ned_dorucak, ned_rucak, ned_vecera;
     private JButton ExportPDF;
+    private JButton  updateButton;
+    private JButton Clearbutton;
+
+    // ====== LABELI ======
+    private JLabel KalorijaLabel;
+    private JLabel ProteiniLabel;
+
+    // ====== COMBOBOXOVI ======
+    private JComboBox pon_uzina, pon_dorucak, pon_rucak, pon_vecera;
+    private JComboBox uto_uzina, uto_dorucak, uto_rucak, uto_vecera;
+    private JComboBox sri_uzina, sri_dorucak, sri_rucak, sri_vecera;
+    private JComboBox cet_uzina, cet_dorucak, cet_rucak, cet_vecera;
+    private JComboBox pet_uzina, pet_dorucak, pet_rucak, pet_vecera;
+    private JComboBox sub_uzina, sub_dorucak, sub_rucak, sub_vecera;
+    private JComboBox ned_uzina, ned_dorucak, ned_rucak, ned_vecera;
 
     private JComboBox[] sviComboBoxovi;
     private Map<String, JComboBox[]> daniMap;
@@ -50,27 +44,25 @@ public class SedmicniplanerObrokaUser extends JFrame {
 
         setTitle("Sedmični planer obroka");
         setContentPane(SedmicnipanelGlava);
-        setSize(1100, 400);
+        setSize(1100, 450);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
+        KalorijaLabel.setText("Ukupno kalorija: 0 kcal");
+        ProteiniLabel.setText("Ukupno proteina: 0 g");
 
 
-        Clearbutton.setBorder(BorderFactory.createEmptyBorder(13, 13, 13,13));
-        Clearbutton.setBackground(new Color(69, 104, 130));
-        Clearbutton.setForeground(Color.WHITE);
-
-        updateButton.setBorder(BorderFactory.createEmptyBorder(13, 13, 13,13));
-        updateButton.setBackground(new Color(69, 104, 130));
-        updateButton.setForeground(Color.WHITE);
-
-        sacuvajButton.setBorder(BorderFactory.createEmptyBorder(13, 13, 13,13));
         sacuvajButton.setBackground(new Color(69, 104, 130));
-        sacuvajButton.setForeground(Color.WHITE);
+        sacuvajButton.setBorder(BorderFactory.createEmptyBorder(20, 40, 20, 40));
 
-        ExportPDF.setBorder(BorderFactory.createEmptyBorder(13, 13, 13,13));
         ExportPDF.setBackground(new Color(69, 104, 130));
-        ExportPDF.setForeground(Color.WHITE);
+        ExportPDF.setBorder(BorderFactory.createEmptyBorder(20, 40, 20, 40));
+
+        updateButton.setBackground(new Color(69, 104, 130));
+        updateButton.setBorder(BorderFactory.createEmptyBorder(20, 40, 20, 40));
+
+        Clearbutton.setBackground(new Color(69, 104, 130));
+        Clearbutton.setBorder(BorderFactory.createEmptyBorder(20, 40, 20, 40));
 
         inicijalizujMapu();
 
@@ -81,6 +73,11 @@ public class SedmicniplanerObrokaUser extends JFrame {
 
         ucitajObrokeIzBaze();
         ucitajSacuvaniPlan();
+        izracunajKalorijeIProteine();
+
+        for (JComboBox cb : sviComboBoxovi) {
+            cb.addActionListener(e -> izracunajKalorijeIProteine());
+        }
 
         sacuvajButton.addActionListener(e -> sacuvajSedmicniPlan());
         Clearbutton.addActionListener(e -> ocistiComboBoxove());
@@ -93,6 +90,7 @@ public class SedmicniplanerObrokaUser extends JFrame {
         });
     }
 
+    // ================= MAPA DANA =================
     private void inicijalizujMapu() {
 
         daniMap = new LinkedHashMap<>();
@@ -106,6 +104,7 @@ public class SedmicniplanerObrokaUser extends JFrame {
         daniMap.put("nedelja",     new JComboBox[]{ned_uzina, ned_dorucak, ned_rucak, ned_vecera});
     }
 
+    // ================= UČITAVANJE OBROKA =================
     private void ucitajObrokeIzBaze() {
 
         MongoDatabase db = Bazapodataka.getDatabase();
@@ -124,6 +123,7 @@ public class SedmicniplanerObrokaUser extends JFrame {
         }
     }
 
+    // ================= UČITAVANJE PLANA =================
     private void ucitajSacuvaniPlan() {
 
         MongoDatabase db = Bazapodataka.getDatabase();
@@ -149,7 +149,7 @@ public class SedmicniplanerObrokaUser extends JFrame {
         }
     }
 
-    // ================= SAVE / UPDATE =================
+    // ================= SAVE =================
     private void sacuvajSedmicniPlan() {
 
         MongoDatabase db = Bazapodataka.getDatabase();
@@ -174,17 +174,39 @@ public class SedmicniplanerObrokaUser extends JFrame {
         col.updateOne(
                 new Document("userId", UserSession.getUser().getId()),
                 new Document("$set", data),
-                new com.mongodb.client.model.UpdateOptions().upsert(true)
+                new UpdateOptions().upsert(true)
         );
 
-        JOptionPane.showMessageDialog(
-                this,
-                "Sedmični plan je uspješno sačuvan ✔",
-                "Sačuvano",
-                JOptionPane.INFORMATION_MESSAGE
-        );
+        JOptionPane.showMessageDialog(this, "Uspješno sačuvano ✔");
     }
 
+    // ================= IZRAČUN =================
+    private void izracunajKalorijeIProteine() {
+
+        MongoDatabase db = Bazapodataka.getDatabase();
+        MongoCollection<Document> col = db.getCollection("obroci");
+
+        int kalorije = 0;
+        int proteini = 0;
+
+        for (String dan : daniMap.keySet()) {
+
+            for (JComboBox cb : daniMap.get(dan)) {
+
+                String naziv = (String) cb.getSelectedItem();
+                if (naziv == null || naziv.equals("Odaberi")) continue;
+
+                Document obrok = col.find(new Document("nazivObroka", naziv)).first();
+                if (obrok != null) {
+                    kalorije += obrok.getInteger("kalorije", 0);
+                    proteini += obrok.getInteger("proteini", 0);
+                }
+            }
+        }
+
+        KalorijaLabel.setText("Ukupno kalorija: " + kalorije + " kcal");
+        ProteiniLabel.setText("Ukupno proteina: " + proteini + " g");
+    }
 
 
     private void ocistiComboBoxove() {
@@ -200,6 +222,14 @@ public class SedmicniplanerObrokaUser extends JFrame {
             for (JComboBox cb : sviComboBoxovi) {
                 cb.setSelectedIndex(0);
             }
+            izracunajKalorijeIProteine();
         }
     }
+
+
+
+
+
+
+
 }

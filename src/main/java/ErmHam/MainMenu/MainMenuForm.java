@@ -1,9 +1,6 @@
 package ErmHam.MainMenu;
 
-import ErmHam.Admin.DodajKorisnika;
-import ErmHam.Admin.DodajPlaniranjeObroka;
-import ErmHam.Admin.Pracenjefinancija;
-import ErmHam.Admin.PregledKorisnika;
+import ErmHam.Admin.*;
 import ErmHam.LoginForm.Loginform;
 import ErmHam.User.Podacioracunu;
 import ErmHam.UserSession;
@@ -20,9 +17,10 @@ public class MainMenuForm {
     private JButton PracenjefinancijaButton;
     private JButton pregledKorisnikaButton;
     private JButton PracenjenavikaObroka;
-    private JButton planiranjeUcenjaButton;
+    private JButton fitnesPlaniranjeButton;
     private JButton podaciORacunuButton;
     private JButton odjaviseButton;
+    private JButton UcenjeButton;
     private String role;
 
 
@@ -49,15 +47,18 @@ public class MainMenuForm {
         PracenjenavikaObroka.setBackground(new Color(69, 104, 130));
         PracenjenavikaObroka.setBorder(BorderFactory.createEmptyBorder(20, 40, 20, 40));
 
-        planiranjeUcenjaButton.setBackground(new Color(69, 104, 130));
-        planiranjeUcenjaButton.setBorder(BorderFactory.createEmptyBorder(20, 40, 20, 40));
+        fitnesPlaniranjeButton.setBackground(new Color(69, 104, 130));
+        fitnesPlaniranjeButton.setBorder(BorderFactory.createEmptyBorder(20, 40, 20, 40));
+
+        UcenjeButton.setBackground(new Color(69, 104, 130));
+        UcenjeButton.setBorder(BorderFactory.createEmptyBorder(20, 40, 20, 40));
 
         odjaviseButton.setBackground(new Color(69, 104, 130));
         odjaviseButton.setBorder(BorderFactory.createEmptyBorder(20, 40, 20, 40));
     }
 
     private JPanel wrap(JButton button) {
-        JPanel p = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 80));
+        JPanel p = new JPanel(new FlowLayout(FlowLayout.CENTER, 0, 80));
         p.setOpaque(false); // NE dira background
         p.add(button);
         return p;
@@ -66,7 +67,7 @@ public class MainMenuForm {
     private void applyRolePermissions() {
 
         adminPlaceholder.removeAll();
-        adminPlaceholder.setLayout(new GridLayout(2, 3, 5, 5));
+        adminPlaceholder.setLayout(new GridLayout(2, 3, 0, 0));
 
         if ("SUPERADMIN".equals(role)) {
 
@@ -76,14 +77,17 @@ public class MainMenuForm {
 
             adminPlaceholder.add(wrap(PracenjefinancijaButton));
             adminPlaceholder.add(wrap(PracenjenavikaObroka));
-            adminPlaceholder.add(wrap(planiranjeUcenjaButton));
+            adminPlaceholder.add(wrap(fitnesPlaniranjeButton));
+
+            adminPlaceholder.add(wrap(UcenjeButton));
 
         } else { // USER
 
             adminPlaceholder.add(wrap(podaciORacunuButton));
             adminPlaceholder.add(wrap(PracenjefinancijaButton));
             adminPlaceholder.add(wrap(PracenjenavikaObroka));
-            adminPlaceholder.add(wrap(planiranjeUcenjaButton));
+            adminPlaceholder.add(wrap(fitnesPlaniranjeButton));
+            adminPlaceholder.add(wrap(UcenjeButton));
         }
 
         adminPlaceholder.revalidate();
@@ -113,6 +117,29 @@ public class MainMenuForm {
             }
 
         });
+
+
+
+        fitnesPlaniranjeButton.addActionListener(e -> {
+
+            if("SUPERADMIN".equals(role)){
+                new PlanerFitness().setVisible(true);
+            }else{
+                new ErmHam.User.FitnesplanerUser().setVisible(true);
+            }
+        });
+
+        UcenjeButton.addActionListener(e -> {
+
+            if("SUPERADMIN".equals(role)){
+                new UcenjePlanerAdmin().setVisible(true);
+            }else{
+                new ErmHam.User.UcenjeplanerUser().setVisible(true);
+            }
+        });
+
+
+
         odjaviseButton.addActionListener(e -> odjaviSe());
 
     }
