@@ -27,6 +27,8 @@ public class UcenjePlanerAdmin extends JFrame {
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
+        pretrazivnje.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+
         Slika = new JLabel(
                 new ImageIcon(this.getClass().getResource("/Pretrazivanje.png"))
         );

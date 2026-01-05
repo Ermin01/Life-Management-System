@@ -2,7 +2,6 @@ package ErmHam.Admin;
 
 import ErmHam.Database.Bazapodataka;
 import ErmHam.Transakcija;
-import ErmHam.Users;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
@@ -25,6 +24,8 @@ public class Pracenjefinancija extends JFrame {
     private JTextField SaldoField;
     private JButton sacuvajBtn;
     private JButton exportPDF;
+    private JButton OcistiBtn;
+    private JPanel statistikaPanel;
 
     private JLabel tipTransakcije;
     private JLabel kategorija;
@@ -32,7 +33,6 @@ public class Pracenjefinancija extends JFrame {
     private JLabel opis;
     private JLabel datumlabel;
     private JLabel Saldo;
-    private JButton OcistiBtn;
 
     private String role;
     private List<Transakcija> transakcije = new ArrayList<>();
@@ -42,7 +42,7 @@ public class Pracenjefinancija extends JFrame {
 
         setTitle("Praćenje financija");
         setContentPane(GlavniProzorPracenjeFina);
-        setSize(900, 450);
+        setSize(900, 650);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
@@ -55,10 +55,11 @@ public class Pracenjefinancija extends JFrame {
         katagroijaBox.addItem("Računi");
         katagroijaBox.addItem("Ostalo");
 
-        SaldoField.setEditable(false); // 🔒 samo prikaz
+        SaldoField.setEditable(false);
 
         sacuvajBtn.addActionListener(e -> dodajTransakciju());
         OcistiBtn.addActionListener(e -> clearForm());
+        exportPDF.addActionListener(e -> exportToPDF());
 
         applyRoleView();
         loadFromDB();
@@ -67,6 +68,10 @@ public class Pracenjefinancija extends JFrame {
         popuniField();
         prikaziSaldo();
 
+
+        // STATISTIKA PANEL
+        statistikaPanel.setLayout(new BorderLayout());
+        statistikaPanel.add(new BarChartPanel(), BorderLayout.CENTER);
 
         sacuvajBtn.setBorder(BorderFactory.createEmptyBorder(13, 13, 13,13));
         sacuvajBtn.setBackground(new Color(69, 104, 130));
@@ -81,17 +86,17 @@ public class Pracenjefinancija extends JFrame {
         exportPDF.setForeground(Color.WHITE);
 
 
-
-
+        Iznos.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        Opis.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        datum.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        SaldoField.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
     }
 
-    // ---------------- UI ----------------
 
     private void styleTable() {
         pregledTableFinacija.setRowHeight(28);
         pregledTableFinacija.setFont(new Font("Segoe UI", Font.PLAIN, 14));
         pregledTableFinacija.setShowVerticalLines(false);
-        pregledTableFinacija.setShowHorizontalLines(true);
     }
 
     private void applyRoleView() {
@@ -103,13 +108,13 @@ public class Pracenjefinancija extends JFrame {
             datum.setVisible(false);
             sacuvajBtn.setVisible(false);
             exportPDF.setVisible(false);
+            OcistiBtn.setVisible(false);
             tipTransakcije.setText("");
             kategorija.setText("");
             iznos.setText("");
             opis.setText("");
-            datumlabel.setText("");
-            datum.setVisible(false);
-            OcistiBtn.setVisible(false);
+            datum.setText("");
+
         }
     }
 
@@ -151,9 +156,9 @@ public class Pracenjefinancija extends JFrame {
         pregledTableFinacija.setModel(model);
     }
 
-    // ---------------- LOGIKA ----------------
 
-    private void dodajTransakciju() {
+
+        private void dodajTransakciju() {
 
         if (tipTransakcijeBox.getSelectedIndex() == 0 ||
                 katagroijaBox.getSelectedIndex() == 0 ||
@@ -188,15 +193,14 @@ public class Pracenjefinancija extends JFrame {
         }
     }
 
+
     private double izracunajSaldo() {
         double saldo = 0;
-
         for (Transakcija t : transakcije) {
-            if ("Prihodi".equals(t.getTipTransakcijeBox())) {
+            if ("Prihodi".equals(t.getTipTransakcijeBox()))
                 saldo += t.getIznos();
-            } else {
+            else
                 saldo -= t.getIznos();
-            }
         }
         return saldo;
     }
@@ -205,12 +209,22 @@ public class Pracenjefinancija extends JFrame {
         SaldoField.setText(String.format("%.2f", izracunajSaldo()));
     }
 
+    private double ukupniPrihodi() {
+        return transakcije.stream()
+                .filter(t -> "Prihodi".equals(t.getTipTransakcijeBox()))
+                .mapToDouble(Transakcija::getIznos)
+                .sum();
+    }
 
+    private double ukupniRashodi() {
+        return transakcije.stream()
+                .filter(t -> "Rashodi".equals(t.getTipTransakcijeBox()))
+                .mapToDouble(Transakcija::getIznos)
+                .sum();
+    }
 
     private void popuniField() {
         pregledTableFinacija.getSelectionModel().addListSelectionListener(e -> {
-            if (e.getValueIsAdjusting()) return;
-
             int row = pregledTableFinacija.getSelectedRow();
             if (row == -1) return;
 
@@ -229,8 +243,120 @@ public class Pracenjefinancija extends JFrame {
         datum.setText("");
     }
 
-}
 
-//git add .
-//git commit -m "Promjene na login formi"
-//git push
+
+    class BarChartPanel extends JPanel {
+        @Override
+        protected void paintComponent(Graphics g) {
+            super.paintComponent(g);
+
+            double prihodi = ukupniPrihodi();
+            double rashodi = ukupniRashodi();
+            double max = Math.max(prihodi, rashodi);
+            if (max == 0) max = 1;
+
+            int h = getHeight() - 50;
+            int w = 80;
+
+            int ph = (int) ((prihodi / max) * h);
+            int rh = (int) ((rashodi / max) * h);
+
+            g.setColor(new Color(46, 204, 113));
+            g.fillRect(80, getHeight() - ph - 30, w, ph);
+            g.drawString("Prihodi", 90, getHeight() - 10);
+
+            g.setColor(new Color(231, 76, 60));
+            g.fillRect(220, getHeight() - rh - 30, w, rh);
+            g.drawString("Rashodi", 230, getHeight() - 10);
+        }
+    }
+
+    private void exportToPDF() {
+
+        JFileChooser chooser = new JFileChooser();
+        chooser.setDialogTitle("Sačuvaj PDF izvještaj");
+        System.out.println("EXPORT PDF POZVAN");
+
+
+        if (chooser.showSaveDialog(this) != JFileChooser.APPROVE_OPTION) {
+            return;
+        }
+
+        String path = chooser.getSelectedFile().getAbsolutePath();
+        if (!path.endsWith(".pdf")) {
+            path += ".pdf";
+        }
+
+        try {
+            com.itextpdf.text.Document pdfDoc = new com.itextpdf.text.Document();
+            com.itextpdf.text.pdf.PdfWriter.getInstance(
+                    pdfDoc,
+                    new java.io.FileOutputStream(path)
+            );
+
+            pdfDoc.open();
+
+            // NASLOV
+            com.itextpdf.text.Font titleFont =
+                    new com.itextpdf.text.Font(
+                            com.itextpdf.text.Font.FontFamily.HELVETICA,
+                            18,
+                            com.itextpdf.text.Font.BOLD
+                    );
+
+            pdfDoc.add(new com.itextpdf.text.Paragraph(
+                    "Izvještaj – Pracenje financija\n\n", titleFont
+            ));
+
+            // TABELA
+            com.itextpdf.text.pdf.PdfPTable table =
+                    new com.itextpdf.text.pdf.PdfPTable(4);
+            table.setWidthPercentage(100);
+
+            table.addCell("Tip");
+            table.addCell("Kategorija");
+            table.addCell("Iznos");
+            table.addCell("Opis");
+
+            for (Transakcija t : transakcije) {
+                table.addCell(t.getTipTransakcijeBox());
+                table.addCell(t.getKategorijaBox());
+                table.addCell(String.valueOf(t.getIznos()));
+                table.addCell(t.getOpis());
+            }
+
+            pdfDoc.add(table);
+
+            // SALDO
+            pdfDoc.add(new com.itextpdf.text.Paragraph("\n"));
+            pdfDoc.add(new com.itextpdf.text.Paragraph(
+                    "Ukupni prihodi: " + ukupniPrihodi()
+            ));
+            pdfDoc.add(new com.itextpdf.text.Paragraph(
+                    "Ukupni rashodi: " + ukupniRashodi()
+            ));
+            pdfDoc.add(new com.itextpdf.text.Paragraph(
+                    "Saldo: " + izracunajSaldo()
+            ));
+
+            pdfDoc.close();
+
+            JOptionPane.showMessageDialog(
+                    this,
+                    "PDF uspješno sačuvan!",
+                    "Uspjeh",
+                    JOptionPane.INFORMATION_MESSAGE
+            );
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Greška pri kreiranju PDF-a",
+                    "Greška",
+                    JOptionPane.ERROR_MESSAGE
+            );
+        }
+    }
+
+}

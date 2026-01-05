@@ -33,9 +33,10 @@
                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <font name="JetBrains Mono" size="16" style="1"/>
+                  <font name="JetBrains Mono" size="14" style="1"/>
                   <foreground color="-855041"/>
-                  <text value="Dodaj Korisnika"/>
+                  <horizontalTextPosition value="11"/>
+                  <text value="DODAJ KORISNIKA"/>
                 </properties>
               </component>
               <component id="99951" class="javax.swing.JButton" binding="PracenjefinancijaButton">
@@ -43,9 +44,9 @@
                   <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <font name="JetBrains Mono" size="16" style="1"/>
+                  <font name="JetBrains Mono" size="14" style="1"/>
                   <foreground color="-855041"/>
-                  <text value="Praćenje financija"/>
+                  <text value="PRAĆENJE FINANSIJA"/>
                 </properties>
               </component>
               <component id="3689" class="javax.swing.JButton" binding="pregledKorisnikaButton" default-binding="true">
@@ -53,9 +54,9 @@
                   <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <font name="JetBrains Mono" size="16" style="1"/>
+                  <font name="JetBrains Mono" size="14" style="1"/>
                   <foreground color="-855041"/>
-                  <text value="Pregled Korisnika"/>
+                  <text value="PREGLED KORISNIKA"/>
                 </properties>
               </component>
               <component id="a609f" class="javax.swing.JButton" binding="PracenjenavikaObroka">
@@ -63,9 +64,9 @@
                   <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <font name="JetBrains Mono" size="16" style="1"/>
+                  <font name="JetBrains Mono" size="14" style="1"/>
                   <foreground color="-855041"/>
-                  <text value="Planiranje Obroka"/>
+                  <text value="PLANIRANJE OBROKA"/>
                 </properties>
               </component>
               <component id="1bc0e" class="javax.swing.JButton" binding="podaciORacunuButton">
@@ -73,9 +74,9 @@
                   <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <font name="JetBrains Mono" size="16" style="1"/>
+                  <font name="JetBrains Mono" size="14" style="1"/>
                   <foreground color="-855041"/>
-                  <text value="Podaci o računu"/>
+                  <text value="PODACI O RAČUNU"/>
                 </properties>
               </component>
               <component id="ae7ae" class="javax.swing.JButton" binding="fitnesPlaniranjeButton">
@@ -83,9 +84,9 @@
                   <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <font name="JetBrains Mono" size="16" style="1"/>
+                  <font name="JetBrains Mono" size="14" style="1"/>
                   <foreground color="-855041"/>
-                  <text value="Fitnes"/>
+                  <text value="FITNES"/>
                 </properties>
               </component>
               <component id="a575c" class="javax.swing.JButton" binding="UcenjeButton">
@@ -93,9 +94,9 @@
                   <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <font name="JetBrains Mono" size="16" style="1"/>
+                  <font name="JetBrains Mono" size="14" style="1"/>
                   <foreground color="-855041"/>
-                  <text value="Planer ucenja"/>
+                  <text value="PLANIRANJE UČENJA"/>
                 </properties>
               </component>
             </children>

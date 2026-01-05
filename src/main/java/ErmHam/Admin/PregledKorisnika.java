@@ -25,7 +25,7 @@ public class PregledKorisnika extends JFrame {
     private JTextField updateIme;
     private JTextField updatePassword;
     private JButton UrediButton;
-    private JButton IzvjestajButton;
+    private JButton obrisiKorisnika;
     private List<Users> users = new ArrayList<>();
 
     public PregledKorisnika() {
@@ -62,6 +62,22 @@ public class PregledKorisnika extends JFrame {
         updateIme.setEditable(true);
         updateRole.setEnabled(true);
         UrediButton.addActionListener(e -> urediKorisnika());
+
+
+
+        UrediButton.setBorder(BorderFactory.createEmptyBorder(13, 13, 13,13));
+        UrediButton.setBackground(new Color(69, 104, 130));
+        UrediButton.setForeground(Color.WHITE);
+
+        IzvjestajbtnPDF.setBorder(BorderFactory.createEmptyBorder(13, 13, 13,13));
+        IzvjestajbtnPDF.setBackground(new Color(69, 104, 130));
+        IzvjestajbtnPDF.setForeground(Color.WHITE);
+
+        obrisiKorisnika.setBorder(BorderFactory.createEmptyBorder(13, 13, 13,13));
+        obrisiKorisnika.setBackground(new Color(69, 104, 130));
+        obrisiKorisnika.setForeground(Color.WHITE);
+
+        pretrazivanje.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
 
 
     }

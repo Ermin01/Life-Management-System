@@ -9,6 +9,7 @@ import org.bson.Document;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,13 +46,30 @@ public class UcenjeplanerUser extends JFrame {
 
         initComboboxes();
         refreshUI();
+        popuniField();
+
+
+        Napomena.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+
+
+        sacuvajButton.setBorder(BorderFactory.createEmptyBorder(13, 13, 13,13));
+        sacuvajButton.setBackground(new Color(69, 104, 130));
+        sacuvajButton.setForeground(Color.WHITE);
+
+        poceoButton.setBorder(BorderFactory.createEmptyBorder(13, 13, 13,13));
+        poceoButton.setBackground(new Color(69, 104, 130));
+        poceoButton.setForeground(Color.WHITE);
+
+        zavrsioButton.setBorder(BorderFactory.createEmptyBorder(13, 13, 13,13));
+        zavrsioButton.setBackground(new Color(69, 104, 130));
+        zavrsioButton.setForeground(Color.WHITE);
+
 
         sacuvajButton.addActionListener(e -> dodajPlanucnjeaUsera());
         poceoButton.addActionListener(e -> promijeniStatus("POCEO"));
         zavrsioButton.addActionListener(e -> promijeniStatus("ZAVRSENO"));
     }
 
-    // ================= INIT =================
 
     private void initComboboxes() {
         predmetiCombobox.addItem("Odaberi predmet");
@@ -82,7 +100,7 @@ public class UcenjeplanerUser extends JFrame {
         PrioreitetCombox.addItem("Visok");
     }
 
-    // ================= REFRESH =================
+
 
     private void refreshUI() {
         loadFromDB();
@@ -111,7 +129,7 @@ public class UcenjeplanerUser extends JFrame {
         UcenjePlanerUserTable.setModel(model);
     }
 
-    // ================= DB =================
+
 
     private void loadFromDB() {
         MongoDatabase db = Bazapodataka.getDatabase();
@@ -219,5 +237,36 @@ public class UcenjeplanerUser extends JFrame {
         progressBar1.setValue(procenat);
         progressBar1.setStringPainted(true);
         progressBar1.setString(procenat + "% završeno");
+    }
+
+
+    private void popuniField() {
+        UcenjePlanerUserTable.getSelectionModel().addListSelectionListener(e -> {
+            clearForm();
+            int row = UcenjePlanerUserTable.getSelectedRow();
+
+            if (row == -1) return;
+
+            predmetiCombobox.setSelectedItem(UcenjePlanerUserTable.getValueAt(row, 0));
+            ciljeviCombobox.setSelectedItem(UcenjePlanerUserTable.getValueAt(row, 1));
+            vrijemepodanuCombobox.setSelectedItem(UcenjePlanerUserTable.getValueAt(row, 2));
+            Trajanjecombobx.setSelectedItem(UcenjePlanerUserTable.getValueAt(row, 3));
+            PrioreitetCombox.setSelectedItem(UcenjePlanerUserTable.getValueAt(row, 4));
+            Napomena.setText(UcenjePlanerUserTable.getValueAt(row, 5).toString());
+
+
+        });
+
+
+
+    }
+    private void clearForm() {
+        predmetiCombobox.setSelectedIndex(0);
+        ciljeviCombobox.setSelectedIndex(0);
+        vrijemepodanuCombobox.setSelectedIndex(0);
+        Trajanjecombobx.setSelectedIndex(0);
+        PrioreitetCombox.setSelectedIndex(0);
+        Napomena.setText("");
+
     }
 }

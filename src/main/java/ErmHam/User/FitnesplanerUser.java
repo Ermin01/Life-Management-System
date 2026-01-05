@@ -43,6 +43,7 @@ public class FitnesplanerUser extends JFrame {
 
 
 
+
         try {
             Image bgImage = ImageIO.read(new File(
                     "C:\\Users\\Public\\Documents\\Life Management System\\src\\main\\java\\ErmHam\\Img\\fitnes.jpg"

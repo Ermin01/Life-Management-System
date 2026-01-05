@@ -21,7 +21,6 @@ public class SedmicniplanerObrokaUser extends JFrame {
     private JPanel SedmicnipanelGlava;
     private JButton sacuvajButton;
     private JButton ExportPDF;
-    private JButton  updateButton;
     private JButton Clearbutton;
 
     // ====== LABELI ======
@@ -58,8 +57,6 @@ public class SedmicniplanerObrokaUser extends JFrame {
         ExportPDF.setBackground(new Color(69, 104, 130));
         ExportPDF.setBorder(BorderFactory.createEmptyBorder(20, 40, 20, 40));
 
-        updateButton.setBackground(new Color(69, 104, 130));
-        updateButton.setBorder(BorderFactory.createEmptyBorder(20, 40, 20, 40));
 
         Clearbutton.setBackground(new Color(69, 104, 130));
         Clearbutton.setBorder(BorderFactory.createEmptyBorder(20, 40, 20, 40));
@@ -82,6 +79,7 @@ public class SedmicniplanerObrokaUser extends JFrame {
         sacuvajButton.addActionListener(e -> sacuvajSedmicniPlan());
         Clearbutton.addActionListener(e -> ocistiComboBoxove());
 
+        ExportPDF.addActionListener(e -> exportToPDF());
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
@@ -90,7 +88,7 @@ public class SedmicniplanerObrokaUser extends JFrame {
         });
     }
 
-    // ================= MAPA DANA =================
+
     private void inicijalizujMapu() {
 
         daniMap = new LinkedHashMap<>();
@@ -123,7 +121,7 @@ public class SedmicniplanerObrokaUser extends JFrame {
         }
     }
 
-    // ================= UČITAVANJE PLANA =================
+
     private void ucitajSacuvaniPlan() {
 
         MongoDatabase db = Bazapodataka.getDatabase();
@@ -149,7 +147,7 @@ public class SedmicniplanerObrokaUser extends JFrame {
         }
     }
 
-    // ================= SAVE =================
+
     private void sacuvajSedmicniPlan() {
 
         MongoDatabase db = Bazapodataka.getDatabase();
@@ -229,6 +227,96 @@ public class SedmicniplanerObrokaUser extends JFrame {
 
 
 
+    private void exportToPDF() {
+
+        JFileChooser chooser = new JFileChooser();
+        chooser.setDialogTitle("Sačuvaj sedmični planer (PDF)");
+
+        if (chooser.showSaveDialog(this) != JFileChooser.APPROVE_OPTION) {
+            return;
+        }
+
+        String path = chooser.getSelectedFile().getAbsolutePath();
+        if (!path.endsWith(".pdf")) {
+            path += ".pdf";
+        }
+
+        try {
+            com.itextpdf.text.Document pdf =
+                    new com.itextpdf.text.Document();
+            com.itextpdf.text.pdf.PdfWriter.getInstance(
+                    pdf,
+                    new FileOutputStream(path)
+            );
+
+            pdf.open();
+
+            // NASLOV
+            com.itextpdf.text.Font titleFont =
+                    new com.itextpdf.text.Font(
+                            com.itextpdf.text.Font.FontFamily.HELVETICA,
+                            18,
+                            com.itextpdf.text.Font.BOLD
+                    );
+
+            pdf.add(new com.itextpdf.text.Paragraph(
+                    "Sedmični planer obroka\n\n", titleFont
+            ));
+
+            pdf.add(new com.itextpdf.text.Paragraph(
+                    "Korisnik: " + UserSession.getUser().getUsername() + "\n\n"
+            ));
+
+            // TABELA
+            com.itextpdf.text.pdf.PdfPTable table =
+                    new com.itextpdf.text.pdf.PdfPTable(5);
+            table.setWidthPercentage(100);
+
+            table.addCell("Dan");
+            table.addCell("Užina");
+            table.addCell("Doručak");
+            table.addCell("Ručak");
+            table.addCell("Večera");
+
+            for (String dan : daniMap.keySet()) {
+                JComboBox[] cb = daniMap.get(dan);
+
+                table.addCell(dan);
+                table.addCell(cb[0].getSelectedItem().toString());
+                table.addCell(cb[1].getSelectedItem().toString());
+                table.addCell(cb[2].getSelectedItem().toString());
+                table.addCell(cb[3].getSelectedItem().toString());
+            }
+
+            pdf.add(table);
+
+            pdf.add(new com.itextpdf.text.Paragraph("\n"));
+            pdf.add(new com.itextpdf.text.Paragraph(
+                    KalorijaLabel.getText()
+            ));
+            pdf.add(new com.itextpdf.text.Paragraph(
+                    ProteiniLabel.getText()
+            ));
+
+            pdf.close();
+
+            JOptionPane.showMessageDialog(
+                    this,
+                    "PDF uspješno sačuvan ✔",
+                    "Export",
+                    JOptionPane.INFORMATION_MESSAGE
+            );
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Greška pri exportu PDF-a",
+                    "Greška",
+                    JOptionPane.ERROR_MESSAGE
+            );
+        }
+    }
 
 
 

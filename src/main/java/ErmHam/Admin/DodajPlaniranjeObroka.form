@@ -28,7 +28,7 @@
               <enabled value="true"/>
               <font name="JetBrains Mono" size="14"/>
               <foreground color="-855041"/>
-              <text value="Naziv obroka:"/>
+              <text value="NAZIV OBROKA"/>
             </properties>
           </component>
           <vspacer id="5cfce">
@@ -36,14 +36,6 @@
               <grid row="7" column="1" row-span="1" col-span="10" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
             </constraints>
           </vspacer>
-          <component id="2d42" class="javax.swing.JLabel">
-            <constraints>
-              <grid row="0" column="2" row-span="1" col-span="9" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <text value="Dodaj obrok"/>
-            </properties>
-          </component>
           <component id="72f21" class="javax.swing.JLabel">
             <constraints>
               <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
@@ -52,7 +44,7 @@
               <enabled value="true"/>
               <font name="JetBrains Mono" size="14"/>
               <foreground color="-855041"/>
-              <text value="Tip obroka:"/>
+              <text value="TIP OBROKA"/>
             </properties>
           </component>
           <component id="d1638" class="javax.swing.JComboBox" binding="comboBoxtipObroka">
@@ -69,7 +61,7 @@
               <enabled value="true"/>
               <font name="JetBrains Mono" size="14"/>
               <foreground color="-855041"/>
-              <text value="Kategorija"/>
+              <text value="KATEGORIJA"/>
             </properties>
           </component>
           <component id="c0ff1" class="javax.swing.JComboBox" binding="KategorijapracanjeNavika">
@@ -86,7 +78,7 @@
               <enabled value="true"/>
               <font name="JetBrains Mono" size="14"/>
               <foreground color="-855041"/>
-              <text value="Kalorije"/>
+              <text value="KALORIJE"/>
             </properties>
           </component>
           <component id="90df" class="javax.swing.JTextField" binding="kalorije">
@@ -113,7 +105,7 @@
               <enabled value="true"/>
               <font name="JetBrains Mono" size="14"/>
               <foreground color="-855041"/>
-              <text value="Proteini: "/>
+              <text value="PROTEINI"/>
             </properties>
           </component>
           <component id="cab9d" class="javax.swing.JButton" binding="btnObroka">
@@ -123,7 +115,7 @@
             <properties>
               <font name="JetBrains Mono" size="14"/>
               <foreground color="-855041"/>
-              <text value="Sacuvaj"/>
+              <text value="SAČUVAJ"/>
             </properties>
           </component>
           <component id="7d931" class="javax.swing.JButton" binding="obrisiObrokbutton">
@@ -133,7 +125,7 @@
             <properties>
               <font name="JetBrains Mono" size="14"/>
               <foreground color="-855041"/>
-              <text value="Obrisi"/>
+              <text value="OBRIŠI"/>
             </properties>
           </component>
           <component id="75bbc" class="javax.swing.JButton" binding="urediObrok">
@@ -143,7 +135,7 @@
             <properties>
               <font name="JetBrains Mono" size="14"/>
               <foreground color="-855041"/>
-              <text value="Uredi"/>
+              <text value="UREDI"/>
             </properties>
           </component>
           <component id="313f4" class="javax.swing.JButton" binding="ocistiButton">
@@ -153,7 +145,7 @@
             <properties>
               <font name="JetBrains Mono" size="14"/>
               <foreground color="-855041"/>
-              <text value="Ocisti"/>
+              <text value="OČISTI"/>
             </properties>
           </component>
           <component id="d9eb4" class="javax.swing.JTextField" binding="nazivObroka">
@@ -197,6 +189,16 @@
             <border type="none"/>
             <children/>
           </grid>
+          <component id="2d42" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="0" column="3" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <font name="JetBrains Mono" size="16" style="1"/>
+              <foreground color="-855041"/>
+              <text value="DODAJ OBROK"/>
+            </properties>
+          </component>
         </children>
       </grid>
       <grid id="8b4b8" layout-manager="GridLayoutManager" row-count="3" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
@@ -211,7 +213,7 @@
         <children>
           <scrollpane id="1d58">
             <constraints>
-              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+              <grid row="1" column="0" row-span="2" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties/>
             <border type="none"/>
@@ -222,157 +224,28 @@
               </component>
             </children>
           </scrollpane>
-          <grid id="49be" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+          <grid id="daa1" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="0" left="0" bottom="0" right="0"/>
             <constraints>
-              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+              <grid row="0" column="1" row-span="3" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
             </constraints>
-            <properties/>
+            <properties>
+              <background color="-15000277"/>
+            </properties>
             <border type="none"/>
-            <children>
-              <grid id="6e822" layout-manager="GridLayoutManager" row-count="1" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-                <margin top="0" left="0" bottom="0" right="0"/>
-                <constraints>
-                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties>
-                  <background color="-15000277"/>
-                </properties>
-                <border type="none"/>
-                <children>
-                  <grid id="f0195" layout-manager="GridLayoutManager" row-count="2" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-                    <margin top="0" left="0" bottom="0" right="0"/>
-                    <constraints>
-                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties>
-                      <background color="-15000277"/>
-                    </properties>
-                    <border type="none"/>
-                    <children>
-                      <component id="8bf1f" class="javax.swing.JLabel">
-                        <constraints>
-                          <grid row="0" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                        </constraints>
-                        <properties>
-                          <font name="JetBrains Mono" size="12"/>
-                          <foreground color="-855041"/>
-                          <text value="Ukupno obroka"/>
-                        </properties>
-                      </component>
-                      <component id="650f1" class="javax.swing.JLabel" binding="Ukupnoobroka">
-                        <constraints>
-                          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                        </constraints>
-                        <properties>
-                          <font name="JetBrains Mono" size="12"/>
-                          <foreground color="-855041"/>
-                          <horizontalAlignment value="0"/>
-                          <horizontalTextPosition value="0"/>
-                          <text value="Label"/>
-                        </properties>
-                      </component>
-                      <hspacer id="badeb">
-                        <constraints>
-                          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                        </constraints>
-                      </hspacer>
-                      <hspacer id="2fa5b">
-                        <constraints>
-                          <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                        </constraints>
-                      </hspacer>
-                    </children>
-                  </grid>
-                  <grid id="dbcf0" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-                    <margin top="0" left="0" bottom="0" right="0"/>
-                    <constraints>
-                      <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties>
-                      <background color="-15000277"/>
-                    </properties>
-                    <border type="none"/>
-                    <children>
-                      <component id="66e29" class="javax.swing.JLabel">
-                        <constraints>
-                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                        </constraints>
-                        <properties>
-                          <font name="JetBrains Mono" size="12"/>
-                          <foreground color="-855041"/>
-                          <text value="Najlosiji obrok"/>
-                        </properties>
-                      </component>
-                      <component id="9d521" class="javax.swing.JLabel">
-                        <constraints>
-                          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                        </constraints>
-                        <properties>
-                          <font name="JetBrains Mono" size="12"/>
-                          <foreground color="-855041"/>
-                          <text value="Label"/>
-                        </properties>
-                      </component>
-                    </children>
-                  </grid>
-                  <grid id="4faf7" layout-manager="GridLayoutManager" row-count="2" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-                    <margin top="0" left="0" bottom="0" right="0"/>
-                    <constraints>
-                      <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties>
-                      <background color="-15000277"/>
-                    </properties>
-                    <border type="none"/>
-                    <children>
-                      <component id="8c4c" class="javax.swing.JLabel">
-                        <constraints>
-                          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                        </constraints>
-                        <properties>
-                          <font name="JetBrains Mono" size="12"/>
-                          <foreground color="-855041"/>
-                          <text value="Najpoularaniji obrok:"/>
-                        </properties>
-                      </component>
-                      <component id="b8788" class="javax.swing.JLabel">
-                        <constraints>
-                          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                        </constraints>
-                        <properties>
-                          <font name="JetBrains Mono" size="12"/>
-                          <foreground color="-855041"/>
-                          <text value="Label"/>
-                        </properties>
-                      </component>
-                      <hspacer id="af8ef">
-                        <constraints>
-                          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                        </constraints>
-                      </hspacer>
-                      <hspacer id="46219">
-                        <constraints>
-                          <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                        </constraints>
-                      </hspacer>
-                    </children>
-                  </grid>
-                </children>
-              </grid>
-            </children>
+            <children/>
           </grid>
           <grid id="59ef2" layout-manager="GridLayoutManager" row-count="1" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="0" left="0" bottom="0" right="0"/>
             <constraints>
-              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <background color="-15000277"/>
             </properties>
             <border type="none"/>
             <children>
-              <grid id="cafc1" layout-manager="GridLayoutManager" row-count="1" column-count="7" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+              <grid id="cafc1" layout-manager="GridLayoutManager" row-count="1" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                 <margin top="0" left="0" bottom="0" right="0"/>
                 <constraints>
                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -389,64 +262,31 @@
                     <properties>
                       <font name="JetBrains Mono" size="12"/>
                       <foreground color="-855041"/>
-                      <text value="Tip obroka:"/>
+                      <text value="TIP OBROKA:"/>
                     </properties>
                   </component>
                   <component id="a5ed6" class="javax.swing.JComboBox" binding="tipobrokaD">
                     <constraints>
-                      <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                      <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties/>
                   </component>
                   <component id="f38d7" class="javax.swing.JLabel">
                     <constraints>
-                      <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                      <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
                       <font name="JetBrains Mono" size="12"/>
                       <foreground color="-855041"/>
-                      <text value="Kategorija: "/>
+                      <text value="KATEGORIJA:"/>
                     </properties>
                   </component>
                   <component id="1af24" class="javax.swing.JComboBox" binding="kalorijaD">
                     <constraints>
-                      <grid row="0" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                      <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties/>
                   </component>
-                  <grid id="3c26a" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-                    <margin top="0" left="0" bottom="0" right="0"/>
-                    <constraints>
-                      <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties>
-                      <background color="-15000277"/>
-                    </properties>
-                    <border type="none"/>
-                    <children/>
-                  </grid>
-                  <grid id="71454" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-                    <margin top="0" left="0" bottom="0" right="0"/>
-                    <constraints>
-                      <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties>
-                      <background color="-15000277"/>
-                    </properties>
-                    <border type="none"/>
-                    <children/>
-                  </grid>
-                  <grid id="37d1b" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-                    <margin top="0" left="0" bottom="0" right="0"/>
-                    <constraints>
-                      <grid row="0" column="5" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties>
-                      <background color="-15000277"/>
-                    </properties>
-                    <border type="none"/>
-                    <children/>
-                  </grid>
                 </children>
               </grid>
               <component id="dde38" class="javax.swing.JTextField" binding="pretrazivanjeObroka">
@@ -464,21 +304,11 @@
                 <properties>
                   <font name="JetBrains Mono" size="12"/>
                   <foreground color="-855041"/>
-                  <text value="Trazi: "/>
+                  <icon value="Pretrazivanje.png"/>
+                  <text value="TRAŽI: "/>
                 </properties>
               </component>
             </children>
-          </grid>
-          <grid id="daa1" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-            <margin top="0" left="0" bottom="0" right="0"/>
-            <constraints>
-              <grid row="0" column="1" row-span="3" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <background color="-15000277"/>
-            </properties>
-            <border type="none"/>
-            <children/>
           </grid>
         </children>
       </grid>
@@ -491,7 +321,7 @@
           <foreground color="-855041"/>
           <horizontalAlignment value="0"/>
           <horizontalTextPosition value="0"/>
-          <text value="Praćenje obroka"/>
+          <text value="PRAĆENJE OBROKA"/>
         </properties>
       </component>
       <vspacer id="83d75">

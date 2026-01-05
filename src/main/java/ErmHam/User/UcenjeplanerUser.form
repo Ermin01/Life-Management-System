@@ -10,7 +10,7 @@
     </properties>
     <border type="none"/>
     <children>
-      <grid id="5d900" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+      <grid id="5d900" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints>
           <grid row="1" column="0" row-span="1" col-span="8" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -23,9 +23,11 @@
           <grid id="66273" layout-manager="GridLayoutManager" row-count="9" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="0" left="0" bottom="0" right="0"/>
             <constraints>
-              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
             </constraints>
-            <properties/>
+            <properties>
+              <background color="-15000277"/>
+            </properties>
             <border type="none"/>
             <children>
               <component id="eeb4e" class="javax.swing.JLabel">
@@ -33,6 +35,8 @@
                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
+                  <font name="JetBrains Mono" size="14" style="1"/>
+                  <foreground color="-855041"/>
                   <text value="Predmet"/>
                 </properties>
               </component>
@@ -52,6 +56,8 @@
                   <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
+                  <font name="JetBrains Mono" size="14" style="1"/>
+                  <foreground color="-855041"/>
                   <text value="Ciljevi"/>
                 </properties>
               </component>
@@ -66,6 +72,8 @@
                   <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
+                  <font name="JetBrains Mono" size="14" style="1"/>
+                  <foreground color="-855041"/>
                   <text value="Vrijeme po danu"/>
                 </properties>
               </component>
@@ -80,6 +88,8 @@
                   <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
+                  <font name="JetBrains Mono" size="14" style="1"/>
+                  <foreground color="-855041"/>
                   <text value="Trajanje"/>
                 </properties>
               </component>
@@ -94,6 +104,8 @@
                   <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
+                  <font name="JetBrains Mono" size="14" style="1"/>
+                  <foreground color="-855041"/>
                   <text value="Napomena"/>
                 </properties>
               </component>
@@ -102,6 +114,8 @@
                   <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
+                  <font name="JetBrains Mono" size="14" style="1"/>
+                  <foreground color="-855041"/>
                   <text value="Status"/>
                 </properties>
               </component>
@@ -118,6 +132,8 @@
                   <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
+                  <font name="JetBrains Mono" size="14" style="1"/>
+                  <foreground color="-855041"/>
                   <text value="Prioritet"/>
                 </properties>
               </component>
@@ -132,6 +148,8 @@
                   <grid row="7" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
+                  <font name="JetBrains Mono" size="14" style="1"/>
+                  <foreground color="-855041"/>
                   <text value="Sacuvaj"/>
                 </properties>
               </component>
@@ -140,6 +158,8 @@
                   <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
+                  <font name="JetBrains Mono" size="14" style="1"/>
+                  <foreground color="-855041"/>
                   <text value="Poceo"/>
                 </properties>
               </component>
@@ -148,10 +168,23 @@
                   <grid row="6" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
+                  <font name="JetBrains Mono" size="14" style="1"/>
+                  <foreground color="-855041"/>
                   <text value="Zavrsio"/>
                 </properties>
               </component>
             </children>
+          </grid>
+          <grid id="39ec7" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="0"/>
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <background color="-15000277"/>
+            </properties>
+            <border type="none"/>
+            <children/>
           </grid>
         </children>
       </grid>
@@ -173,7 +206,9 @@
         <constraints>
           <grid row="0" column="0" row-span="1" col-span="10" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
         </constraints>
-        <properties/>
+        <properties>
+          <background color="-15000277"/>
+        </properties>
         <border type="none"/>
         <children/>
       </grid>
@@ -185,12 +220,14 @@
         <properties/>
         <border type="none"/>
         <children>
-          <grid id="3291d" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+          <grid id="3291d" layout-manager="GridLayoutManager" row-count="2" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="0" left="0" bottom="0" right="0"/>
             <constraints>
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
             </constraints>
-            <properties/>
+            <properties>
+              <background color="-15000277"/>
+            </properties>
             <border type="none"/>
             <children>
               <component id="5f33f" class="javax.swing.JLabel">
@@ -198,6 +235,8 @@
                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
+                  <font name="JetBrains Mono" size="14" style="1"/>
+                  <foreground color="-855041"/>
                   <text value="Statistika ucneja"/>
                 </properties>
               </component>
@@ -206,7 +245,9 @@
                 <constraints>
                   <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                 </constraints>
-                <properties/>
+                <properties>
+                  <background color="-15000277"/>
+                </properties>
                 <border type="none"/>
                 <children>
                   <component id="5336f" class="javax.swing.JLabel">
@@ -214,6 +255,8 @@
                       <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
+                      <font name="JetBrains Mono" size="14" style="1"/>
+                      <foreground color="-855041"/>
                       <text value="Ukupno planova"/>
                     </properties>
                   </component>
@@ -227,7 +270,9 @@
                     <constraints>
                       <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                     </constraints>
-                    <properties/>
+                    <properties>
+                      <background color="-15000277"/>
+                    </properties>
                     <border type="none"/>
                     <children>
                       <component id="20d9" class="javax.swing.JLabel" binding="Ukupnoplanova">
@@ -235,6 +280,8 @@
                           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
+                          <font name="JetBrains Mono" size="14" style="1"/>
+                          <foreground color="-855041"/>
                           <text value="0"/>
                         </properties>
                       </component>
@@ -245,6 +292,8 @@
                       <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
+                      <font name="JetBrains Mono" size="14" style="1"/>
+                      <foreground color="-855041"/>
                       <text value="Zavresno"/>
                     </properties>
                   </component>
@@ -253,6 +302,8 @@
                       <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
+                      <font name="JetBrains Mono" size="14" style="1"/>
+                      <foreground color="-855041"/>
                       <text value="U toku"/>
                     </properties>
                   </component>
@@ -261,6 +312,8 @@
                       <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
+                      <font name="JetBrains Mono" size="14" style="1"/>
+                      <foreground color="-855041"/>
                       <text value="Nije zapoceto"/>
                     </properties>
                   </component>
@@ -269,7 +322,9 @@
                     <constraints>
                       <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                     </constraints>
-                    <properties/>
+                    <properties>
+                      <background color="-15000277"/>
+                    </properties>
                     <border type="none"/>
                     <children>
                       <component id="db10e" class="javax.swing.JLabel" binding="zavresno">
@@ -277,6 +332,8 @@
                           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
+                          <font name="JetBrains Mono" size="14" style="1"/>
+                          <foreground color="-855041"/>
                           <text value="0"/>
                         </properties>
                       </component>
@@ -287,7 +344,9 @@
                     <constraints>
                       <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                     </constraints>
-                    <properties/>
+                    <properties>
+                      <background color="-15000277"/>
+                    </properties>
                     <border type="none"/>
                     <children>
                       <component id="73068" class="javax.swing.JLabel" binding="uToku">
@@ -295,6 +354,8 @@
                           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
+                          <font name="JetBrains Mono" size="14" style="1"/>
+                          <foreground color="-855041"/>
                           <text value="0"/>
                         </properties>
                       </component>
@@ -305,7 +366,9 @@
                     <constraints>
                       <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                     </constraints>
-                    <properties/>
+                    <properties>
+                      <background color="-15000277"/>
+                    </properties>
                     <border type="none"/>
                     <children>
                       <component id="88bda" class="javax.swing.JLabel" binding="nijeZapoceto">
@@ -313,6 +376,8 @@
                           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
+                          <font name="JetBrains Mono" size="14" style="1"/>
+                          <foreground color="-855041"/>
                           <text value="0"/>
                         </properties>
                       </component>
@@ -322,17 +387,32 @@
                     <constraints>
                       <grid row="5" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                     </constraints>
-                    <properties/>
+                    <properties>
+                      <foreground color="-15000277"/>
+                    </properties>
                   </component>
                   <component id="7f5f7" class="javax.swing.JLabel">
                     <constraints>
                       <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
+                      <font name="JetBrains Mono" size="14" style="1"/>
+                      <foreground color="-855041"/>
                       <text value="Procenat završenih"/>
                     </properties>
                   </component>
                 </children>
+              </grid>
+              <grid id="cf60" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-15000277"/>
+                </properties>
+                <border type="none"/>
+                <children/>
               </grid>
             </children>
           </grid>

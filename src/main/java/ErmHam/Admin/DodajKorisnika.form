@@ -25,7 +25,7 @@
             <properties>
               <font name="JetBrains Mono" size="14"/>
               <foreground color="-855041"/>
-              <text value="Korisnciko ime:"/>
+              <text value="KORISNIČKO IME: "/>
             </properties>
           </component>
           <component id="804c8" class="javax.swing.JTextField" binding="userName">
@@ -48,7 +48,7 @@
             <properties>
               <font name="JetBrains Mono" size="14"/>
               <foreground color="-855041"/>
-              <text value="Korisnicka lozinka: "/>
+              <text value="LOZINKA:"/>
             </properties>
           </component>
           <component id="5786e" class="javax.swing.JPasswordField" binding="userPassword">
@@ -82,7 +82,7 @@
             <properties>
               <font name="JetBrains Mono" size="14" style="1"/>
               <foreground color="-855041"/>
-              <text value="Sacuvaj"/>
+              <text value="SAČUVAJ"/>
             </properties>
           </component>
           <vspacer id="62d57">
@@ -97,7 +97,7 @@
             <properties>
               <font name="JetBrains Mono" size="20" style="1"/>
               <foreground color="-855041"/>
-              <text value="Podaci o korisniku: "/>
+              <text value="PODACI O KORISNIKU"/>
             </properties>
           </component>
           <grid id="d3de3" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">

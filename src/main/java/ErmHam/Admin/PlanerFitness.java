@@ -27,7 +27,7 @@ public class PlanerFitness extends JFrame {
     public PlanerFitness(){
         setTitle("Praćenje financija");
         setContentPane(PlanerFitn);
-        setSize(900, 450);
+        setSize(400, 400);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
