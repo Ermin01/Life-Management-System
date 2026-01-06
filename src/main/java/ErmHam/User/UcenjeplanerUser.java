@@ -209,7 +209,7 @@ public class UcenjeplanerUser extends JFrame {
         refreshUI();
     }
 
-    // ================= STATISTIKA =================
+
 
     private void osvjeziStatistiku() {
 

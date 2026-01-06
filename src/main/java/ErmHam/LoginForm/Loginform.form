@@ -88,7 +88,7 @@
                     <properties>
                       <font name="JetBrains Mono" size="16" style="1"/>
                       <foreground color="-855041"/>
-                      <text value="PRIJAVISE"/>
+                      <text value="PRIJAVI SE"/>
                     </properties>
                   </component>
                   <component id="79949" class="javax.swing.JButton" binding="registarBtn">

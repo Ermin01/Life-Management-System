@@ -1,11 +1,12 @@
 package ErmHam.MainMenu;
+import ErmHam.PlaniranjeZad;
+import ErmHam.User.PlaniranjeZadataka;
 import com.formdev.flatlaf.extras.FlatSVGIcon;
 
 import ErmHam.Admin.*;
 import ErmHam.LoginForm.Loginform;
 import ErmHam.User.Podacioracunu;
 import ErmHam.UserSession;
-import com.formdev.flatlaf.extras.FlatSVGIcon;
 
 import javax.swing.*;
 import java.awt.*;
@@ -23,6 +24,7 @@ public class MainMenuForm {
     private JButton podaciORacunuButton;
     private JButton odjaviseButton;
     private JButton UcenjeButton;
+    private JButton PlaniranjeZadButton;
     private String role;
 
 
@@ -80,14 +82,18 @@ public class MainMenuForm {
 
         odjaviseButton.setBackground(new Color(69, 104, 130));
         odjaviseButton.setBorder(BorderFactory.createEmptyBorder(20, 40, 20, 40));
+        odjaviseButton.setIcon(
+                new FlatSVGIcon("icons/logout.svg", 24, 24)
+        );
+
+        PlaniranjeZadButton.setBackground(new Color(69, 104, 130));
+        PlaniranjeZadButton.setBorder(BorderFactory.createEmptyBorder(20, 40, 20, 40));
+        PlaniranjeZadButton.setIcon(
+                new FlatSVGIcon("icons/taskzad.svg", 24, 24)
+        );
+
     }
 
-//    private JPanel wrap(JButton button) {
-//        JPanel p = new JPanel(new FlowLayout(FlowLayout.CENTER, 0, 80));
-//        p.setOpaque(false); // NE dira background
-//        p.add(button);
-//        return p;
-//    }
 private JPanel wrap(JButton button) {
     JPanel p = new JPanel(new GridBagLayout());
     p.setOpaque(false);
@@ -122,6 +128,7 @@ private JPanel wrap(JButton button) {
             adminPlaceholder.add(wrap(PracenjenavikaObroka));
             adminPlaceholder.add(wrap(fitnesPlaniranjeButton));
             adminPlaceholder.add(wrap(UcenjeButton));
+            adminPlaceholder.add(wrap(PlaniranjeZadButton));
         }
 
         adminPlaceholder.revalidate();
@@ -171,6 +178,14 @@ private JPanel wrap(JButton button) {
                 new UcenjePlanerAdmin().setVisible(true);
             }else{
                 new ErmHam.User.UcenjeplanerUser().setVisible(true);
+            }
+        });
+
+        PlaniranjeZadButton.addActionListener(e->{
+            if("SUPERADMIN".equals(role)){
+                new UcenjePlanerAdmin().setVisible(true);
+            }else{
+                new PlaniranjeZadataka().setVisible(true);
             }
         });
 
