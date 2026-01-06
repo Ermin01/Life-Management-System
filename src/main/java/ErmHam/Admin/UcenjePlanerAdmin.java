@@ -15,7 +15,7 @@ public class UcenjePlanerAdmin extends JFrame {
     private JPanel UcenjeAdminplaner;
     private JTable PrikazUcenja;
     private JTextField pretrazivnje;
-    private JButton obrišiButton;
+    private JButton obrisiButton;
     private JPanel prozorNeki;
     private JLabel Slika;
 

@@ -35,6 +35,24 @@
             <version>5.5.13.3</version>
         </dependency>
 
+
+
+
+        <dependency>
+            <groupId>com.formdev</groupId>
+            <artifactId>flatlaf</artifactId>
+            <version>3.4</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.formdev</groupId>
+            <artifactId>flatlaf-extras</artifactId>
+            <version>3.4</version>
+        </dependency>
+
+
+
+
     </dependencies>
 
 </project>

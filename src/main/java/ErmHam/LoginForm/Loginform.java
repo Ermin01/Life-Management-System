@@ -4,6 +4,7 @@ import ErmHam.Database.Bazapodataka;
 import ErmHam.MainMenu.MainMenuForm;
 import ErmHam.UserSession;
 import ErmHam.Users;
+import ErmHam.HashPassword;
 
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
@@ -13,11 +14,10 @@ import javax.imageio.ImageIO;
 import java.io.File;
 import java.io.IOException;
 
-
 import javax.swing.*;
 import java.awt.*;
 
-public class Loginform  extends JFrame{
+public class Loginform extends JFrame {
 
     private JPanel Glavniprozor;
     private JTextField Username;
@@ -48,7 +48,7 @@ public class Loginform  extends JFrame{
         prijaviSeBtn.setBorder(BorderFactory.createEmptyBorder(13, 13, 13, 13));
         prijaviSeBtn.setBackground(new Color(69, 104, 130));
         prijaviSeBtn.setForeground(Color.WHITE);
-        registarBtn.setBorder(BorderFactory.createEmptyBorder(13, 13, 13,13));
+        registarBtn.setBorder(BorderFactory.createEmptyBorder(13, 13, 13, 13));
         registarBtn.setBackground(new Color(69, 104, 130));
         registarBtn.setForeground(Color.WHITE);
 
@@ -72,10 +72,6 @@ public class Loginform  extends JFrame{
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
-
-
     }
 
     public JPanel Glavniprozor() {
@@ -91,9 +87,9 @@ public class Loginform  extends JFrame{
         MongoDatabase db = Bazapodataka.getDatabase();
         MongoCollection<Document> users = db.getCollection("users");
 
+        // 🔹 TRAŽIMO SAMO PO USERNAME
         Document userDoc = users.find(
                 new Document("username", username)
-                        .append("password", password)
         ).first();
 
         if (userDoc == null) {
@@ -101,10 +97,18 @@ public class Loginform  extends JFrame{
             return;
         }
 
+        // 🔹 PROVJERA HASHA
+        String storedHash = userDoc.getString("password");
+
+        if (!HashPassword.verify(password, storedHash)) {
+            JOptionPane.showMessageDialog(null, "Pogrešan username ili password");
+            return;
+        }
+
         Users user = new Users(
                 userDoc.getObjectId("_id").toHexString(),
-                username,
-                password,
+                userDoc.getString("username"),
+                storedHash,
                 userDoc.getString("role")
         );
 
@@ -135,14 +139,17 @@ public class Loginform  extends JFrame{
             return;
         }
 
+        // 🔐 HASH PASSWORD
+        String hashedPassword = HashPassword.hash(password);
+
         users.insertOne(new Document()
                 .append("username", username)
-                .append("password", password)
+                .append("password", hashedPassword)
                 .append("role", "USER")
         );
 
         JOptionPane.showMessageDialog(null, "Registracija uspješna!");
-        toggleMode(); // nazad na login
+        toggleMode();
     }
 
     /* ================= TOGGLE MODE ================= */
@@ -150,14 +157,17 @@ public class Loginform  extends JFrame{
     private void toggleMode() {
         if (mode == Mode.LOGIN) {
             mode = Mode.REGISTER;
-            prijaviSeBtn.setText("Registruj se");
-            registarBtn.setText("Nazad na login");
+            prijaviSeBtn.setText("REGISTRUJ SE");
+            registarBtn.setText("NAZAD NA LOGIN");
         } else {
             mode = Mode.LOGIN;
-            prijaviSeBtn.setText("Prijavi se");
-            registarBtn.setText("Registar");
+            prijaviSeBtn.setText("PRIJAVI SE ");
+            registarBtn.setText("REGISTRACIJA");
         }
     }
+
+// "ermin.ham@gmail.com"
+//   erkoerko
 
 
 

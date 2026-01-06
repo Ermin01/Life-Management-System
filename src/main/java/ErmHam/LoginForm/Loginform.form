@@ -58,7 +58,7 @@
                 <properties>
                   <font name="Fira Code" size="16"/>
                   <foreground color="-855041"/>
-                  <text value="Korisnicka lozinka:"/>
+                  <text value="LOZINKA:"/>
                 </properties>
               </component>
               <component id="94032" class="javax.swing.JLabel">
@@ -68,7 +68,7 @@
                 <properties>
                   <font name="JetBrains Mono" size="16"/>
                   <foreground color="-855041"/>
-                  <text value="Korisnicko ime:"/>
+                  <text value="KORISNIČKO IME:"/>
                 </properties>
               </component>
               <grid id="281a7" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
@@ -88,7 +88,7 @@
                     <properties>
                       <font name="JetBrains Mono" size="16" style="1"/>
                       <foreground color="-855041"/>
-                      <text value="Prijavi se"/>
+                      <text value="PRIJAVISE"/>
                     </properties>
                   </component>
                   <component id="79949" class="javax.swing.JButton" binding="registarBtn">
@@ -98,7 +98,7 @@
                     <properties>
                       <font name="JetBrains Mono" size="16" style="1"/>
                       <foreground color="-855041"/>
-                      <text value="Registar"/>
+                      <text value="REGISTRACIJA"/>
                     </properties>
                   </component>
                 </children>

@@ -6,6 +6,7 @@ import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
 import javax.swing.*;
 import java.awt.*;
+import ErmHam.HashPassword;
 
 public class DodajKorisnika extends JFrame {
 
@@ -46,6 +47,8 @@ public class DodajKorisnika extends JFrame {
 
         String username = userName.getText().trim();
         String password = new String(userPassword.getPassword());
+        String hashedPassword = HashPassword.hash(password);
+
         String role = (String) comboBoxRole.getSelectedItem();
 
         if (username.isEmpty() || password.isEmpty() || role.equals("Odaberi")) {
@@ -65,7 +68,7 @@ public class DodajKorisnika extends JFrame {
 
         Document noviUser = new Document()
                 .append("username", username)
-                .append("password", password)
+                .append("password", hashedPassword)
                 .append("role", role);
 
         users.insertOne(noviUser);

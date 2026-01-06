@@ -1,9 +1,11 @@
 package ErmHam.MainMenu;
+import com.formdev.flatlaf.extras.FlatSVGIcon;
 
 import ErmHam.Admin.*;
 import ErmHam.LoginForm.Loginform;
 import ErmHam.User.Podacioracunu;
 import ErmHam.UserSession;
+import com.formdev.flatlaf.extras.FlatSVGIcon;
 
 import javax.swing.*;
 import java.awt.*;
@@ -30,44 +32,73 @@ public class MainMenuForm {
         this.role = role;
         applyRolePermissions();
         Akcije();
+
+
         dodajKorisnikaButton.setBackground(new Color(69, 104, 130));
         dodajKorisnikaButton.setBorder(BorderFactory.createEmptyBorder(20, 40, 20, 40));
+        dodajKorisnikaButton.setIcon(
+                new FlatSVGIcon("icons/addUser.svg", 24, 24)
+        );
 
 
         pregledKorisnikaButton.setBackground(new Color(69, 104, 130));
         pregledKorisnikaButton.setBorder(BorderFactory.createEmptyBorder(20, 40, 20, 40));
+        pregledKorisnikaButton.setIcon(
+                new FlatSVGIcon("icons/reiv.svg", 24, 24)
+        );
+
 
         podaciORacunuButton.setBackground(new Color(69, 104, 130));
         podaciORacunuButton.setBorder(BorderFactory.createEmptyBorder(20, 40, 20, 40));
-
+        podaciORacunuButton.setIcon(
+                new FlatSVGIcon("icons/personedit.svg", 24, 24)
+        );
 
         PracenjefinancijaButton.setBackground(new Color(69, 104, 130));
         PracenjefinancijaButton.setBorder(BorderFactory.createEmptyBorder(20, 40, 20, 40));
+        PracenjefinancijaButton.setIcon(
+                new FlatSVGIcon("icons/finance.svg", 24, 24)
+        );
 
         PracenjenavikaObroka.setBackground(new Color(69, 104, 130));
         PracenjenavikaObroka.setBorder(BorderFactory.createEmptyBorder(20, 40, 20, 40));
+        PracenjenavikaObroka.setIcon(
+                new FlatSVGIcon("icons/eat.svg", 24, 24)
+        );
 
         fitnesPlaniranjeButton.setBackground(new Color(69, 104, 130));
         fitnesPlaniranjeButton.setBorder(BorderFactory.createEmptyBorder(20, 40, 20, 40));
+        fitnesPlaniranjeButton.setIcon(
+                new FlatSVGIcon("icons/fitnes.svg", 24, 24)
+        );
 
         UcenjeButton.setBackground(new Color(69, 104, 130));
         UcenjeButton.setBorder(BorderFactory.createEmptyBorder(20, 40, 20, 40));
+        UcenjeButton.setIcon(
+                new FlatSVGIcon("icons/book.svg", 24, 24)
+        );
 
         odjaviseButton.setBackground(new Color(69, 104, 130));
         odjaviseButton.setBorder(BorderFactory.createEmptyBorder(20, 40, 20, 40));
     }
 
-    private JPanel wrap(JButton button) {
-        JPanel p = new JPanel(new FlowLayout(FlowLayout.CENTER, 0, 80));
-        p.setOpaque(false); // NE dira background
-        p.add(button);
-        return p;
-    }
-
+//    private JPanel wrap(JButton button) {
+//        JPanel p = new JPanel(new FlowLayout(FlowLayout.CENTER, 0, 80));
+//        p.setOpaque(false); // NE dira background
+//        p.add(button);
+//        return p;
+//    }
+private JPanel wrap(JButton button) {
+    JPanel p = new JPanel(new GridBagLayout());
+    p.setOpaque(false);
+    p.add(button);
+    return p;
+}
     private void applyRolePermissions() {
 
         adminPlaceholder.removeAll();
-        adminPlaceholder.setLayout(new GridLayout(2, 3, 0, 0));
+//        adminPlaceholder.setOpaque(false);
+        adminPlaceholder.setLayout(new GridLayout(3, 3, 40, 40));
 
         if ("SUPERADMIN".equals(role)) {
 
@@ -81,7 +112,10 @@ public class MainMenuForm {
 
             adminPlaceholder.add(wrap(UcenjeButton));
 
-        } else { // USER
+
+        } else {
+
+            adminPlaceholder.setLayout(new GridLayout(2, 3, 40, 40));
 
             adminPlaceholder.add(wrap(podaciORacunuButton));
             adminPlaceholder.add(wrap(PracenjefinancijaButton));
@@ -93,6 +127,8 @@ public class MainMenuForm {
         adminPlaceholder.revalidate();
         adminPlaceholder.repaint();
     }
+
+
 
 
     public void Akcije() {

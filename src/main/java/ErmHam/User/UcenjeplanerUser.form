@@ -37,7 +37,7 @@
                 <properties>
                   <font name="JetBrains Mono" size="14" style="1"/>
                   <foreground color="-855041"/>
-                  <text value="Predmet"/>
+                  <text value="PREDMET"/>
                 </properties>
               </component>
               <vspacer id="f1d7b">
@@ -58,7 +58,7 @@
                 <properties>
                   <font name="JetBrains Mono" size="14" style="1"/>
                   <foreground color="-855041"/>
-                  <text value="Ciljevi"/>
+                  <text value="CILJEVI"/>
                 </properties>
               </component>
               <component id="63a2e" class="javax.swing.JComboBox" binding="ciljeviCombobox">
@@ -74,7 +74,7 @@
                 <properties>
                   <font name="JetBrains Mono" size="14" style="1"/>
                   <foreground color="-855041"/>
-                  <text value="Vrijeme po danu"/>
+                  <text value="VRIJEME PO DANU"/>
                 </properties>
               </component>
               <component id="e8b39" class="javax.swing.JComboBox" binding="vrijemepodanuCombobox">
@@ -90,7 +90,7 @@
                 <properties>
                   <font name="JetBrains Mono" size="14" style="1"/>
                   <foreground color="-855041"/>
-                  <text value="Trajanje"/>
+                  <text value="TRAJANJE"/>
                 </properties>
               </component>
               <component id="eb487" class="javax.swing.JComboBox" binding="Trajanjecombobx">
@@ -106,7 +106,7 @@
                 <properties>
                   <font name="JetBrains Mono" size="14" style="1"/>
                   <foreground color="-855041"/>
-                  <text value="Napomena"/>
+                  <text value="NAPOMENA"/>
                 </properties>
               </component>
               <component id="749b1" class="javax.swing.JLabel">
@@ -116,7 +116,7 @@
                 <properties>
                   <font name="JetBrains Mono" size="14" style="1"/>
                   <foreground color="-855041"/>
-                  <text value="Status"/>
+                  <text value="STATUS"/>
                 </properties>
               </component>
               <component id="1c933" class="javax.swing.JTextField" binding="Napomena">
@@ -134,7 +134,7 @@
                 <properties>
                   <font name="JetBrains Mono" size="14" style="1"/>
                   <foreground color="-855041"/>
-                  <text value="Prioritet"/>
+                  <text value="PRIORITET"/>
                 </properties>
               </component>
               <component id="4fb28" class="javax.swing.JComboBox" binding="PrioreitetCombox">
@@ -150,7 +150,7 @@
                 <properties>
                   <font name="JetBrains Mono" size="14" style="1"/>
                   <foreground color="-855041"/>
-                  <text value="Sacuvaj"/>
+                  <text value="SAČUVAJ"/>
                 </properties>
               </component>
               <component id="1120c" class="javax.swing.JButton" binding="poceoButton" default-binding="true">
@@ -160,7 +160,7 @@
                 <properties>
                   <font name="JetBrains Mono" size="14" style="1"/>
                   <foreground color="-855041"/>
-                  <text value="Poceo"/>
+                  <text value="POČEO"/>
                 </properties>
               </component>
               <component id="3794d" class="javax.swing.JButton" binding="zavrsioButton" default-binding="true">
@@ -170,7 +170,7 @@
                 <properties>
                   <font name="JetBrains Mono" size="14" style="1"/>
                   <foreground color="-855041"/>
-                  <text value="Zavrsio"/>
+                  <text value="ZAVRŠIO"/>
                 </properties>
               </component>
             </children>
@@ -237,7 +237,7 @@
                 <properties>
                   <font name="JetBrains Mono" size="14" style="1"/>
                   <foreground color="-855041"/>
-                  <text value="Statistika ucneja"/>
+                  <text value="STATISTIKA UČENJA"/>
                 </properties>
               </component>
               <grid id="f8152" layout-manager="GridLayoutManager" row-count="7" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
@@ -257,7 +257,7 @@
                     <properties>
                       <font name="JetBrains Mono" size="14" style="1"/>
                       <foreground color="-855041"/>
-                      <text value="Ukupno planova"/>
+                      <text value="UKUPNO PLANOVA"/>
                     </properties>
                   </component>
                   <vspacer id="12055">
@@ -294,7 +294,7 @@
                     <properties>
                       <font name="JetBrains Mono" size="14" style="1"/>
                       <foreground color="-855041"/>
-                      <text value="Zavresno"/>
+                      <text value="ZAVRŠENO"/>
                     </properties>
                   </component>
                   <component id="c9c37" class="javax.swing.JLabel">
@@ -304,7 +304,7 @@
                     <properties>
                       <font name="JetBrains Mono" size="14" style="1"/>
                       <foreground color="-855041"/>
-                      <text value="U toku"/>
+                      <text value="U TOKU"/>
                     </properties>
                   </component>
                   <component id="4ed48" class="javax.swing.JLabel">
@@ -314,7 +314,7 @@
                     <properties>
                       <font name="JetBrains Mono" size="14" style="1"/>
                       <foreground color="-855041"/>
-                      <text value="Nije zapoceto"/>
+                      <text value="NIJE ZAPOČETO"/>
                     </properties>
                   </component>
                   <grid id="a89ae" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
@@ -398,7 +398,7 @@
                     <properties>
                       <font name="JetBrains Mono" size="14" style="1"/>
                       <foreground color="-855041"/>
-                      <text value="Procenat završenih"/>
+                      <text value="PROCENAT ZAVRŠNIH"/>
                     </properties>
                   </component>
                 </children>

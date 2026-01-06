@@ -34,7 +34,7 @@
           <background color="-855041"/>
           <font name="JetBrains Mono" size="14"/>
           <foreground color="-855041"/>
-          <text value="Korisnicko ime:"/>
+          <text value="KORISNIČKO IME:"/>
         </properties>
       </component>
       <component id="54939" class="javax.swing.JLabel">
@@ -56,7 +56,7 @@
           <background color="-855041"/>
           <font name="JetBrains Mono" size="14"/>
           <foreground color="-855041"/>
-          <text value="Moj Profil"/>
+          <text value="MOJ PROFIL"/>
         </properties>
       </component>
       <vspacer id="c1262">
@@ -82,7 +82,7 @@
               <font name="JetBrains Mono" size="16"/>
               <foreground color="-855041"/>
               <horizontalAlignment value="0"/>
-              <text value="Podaci o računu"/>
+              <text value="PODACI O RAČUNU"/>
             </properties>
           </component>
           <hspacer id="a2071">
@@ -133,7 +133,7 @@
             <properties>
               <font name="JetBrains Mono" size="14"/>
               <foreground color="-855041"/>
-              <text value="Spremi promjenu"/>
+              <text value="SPREMI PROMJENU"/>
             </properties>
           </component>
           <component id="e7765" class="javax.swing.JButton" binding="nazadButton" default-binding="true">
@@ -143,7 +143,7 @@
             <properties>
               <font name="JetBrains Mono" size="14"/>
               <foreground color="-855041"/>
-              <text value="Nazad"/>
+              <text value="NAZAD"/>
             </properties>
           </component>
           <hspacer id="522a2">
@@ -172,7 +172,7 @@
           <background color="-855041"/>
           <font name="JetBrains Mono" size="14"/>
           <foreground color="-855041"/>
-          <text value="Sigurnost"/>
+          <text value="SIGURNOST"/>
         </properties>
       </component>
       <component id="49a7d" class="javax.swing.JLabel">
@@ -183,7 +183,7 @@
           <background color="-855041"/>
           <font name="JetBrains Mono" size="14"/>
           <foreground color="-855041"/>
-          <text value="Lozinka"/>
+          <text value="LOZINKA"/>
         </properties>
       </component>
       <grid id="b6727" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
