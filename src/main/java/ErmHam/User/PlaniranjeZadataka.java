@@ -3,11 +3,13 @@ package ErmHam.User;
 import ErmHam.Database.Bazapodataka;
 import ErmHam.PlaniranjeZad;
 import ErmHam.UserSession;
+import com.formdev.flatlaf.extras.FlatSVGIcon;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.util.ArrayList;
@@ -31,6 +33,7 @@ public class PlaniranjeZadataka extends  JFrame {
     private JLabel AktivinizadaciRacunaj;
     private JLabel ZdrastveniZadaciRacunaj;
     private JButton ExportPDF;
+    private JLabel serach;
 
     private final List<PlaniranjeZad> planiranjeZad = new ArrayList<>();
 
@@ -93,11 +96,17 @@ public class PlaniranjeZadataka extends  JFrame {
         dodajZadatakButton.addActionListener(e -> dodajZadatak());
         azurirajButton.addActionListener(e -> azurirajZadatak());
 
+        serach.setIcon(
+                new FlatSVGIcon("icons/search.svg", 24, 24)
+        );
 
         loadFromDB();
         UcitajtabeluZadaci();
         popuniField();
         updateCounters();
+
+        bojastatusa();
+
     }
 
 
@@ -171,6 +180,7 @@ public class PlaniranjeZadataka extends  JFrame {
         UcitajtabeluZadaci();
         updateCounters();
         clearForm();
+        bojastatusa();
 
         JOptionPane.showMessageDialog(this, "Zadatak uspješno dodan!");
     }
@@ -230,6 +240,7 @@ public class PlaniranjeZadataka extends  JFrame {
         loadFromDB();
         UcitajtabeluZadaci();
         updateCounters();
+        bojastatusa();
 
         JOptionPane.showMessageDialog(this, "Zadatak ažuriran!");
     }
@@ -264,6 +275,53 @@ public class PlaniranjeZadataka extends  JFrame {
         return true;
     }
 
+
+    private void bojastatusa() {
+        planiranjezadatkaTable.getColumnModel()
+                .getColumn(4)
+                .setCellRenderer(new DefaultTableCellRenderer() {
+
+                    @Override
+                    public Component getTableCellRendererComponent(
+                            JTable table, Object value, boolean isSelected,
+                            boolean hasFocus, int row, int column) {
+
+                        Component c = super.getTableCellRendererComponent(
+                                table, value, isSelected, hasFocus, row, column);
+
+                        String status = value.toString();
+
+                        if (!isSelected) {
+                            switch (status) {
+                                case "Aktivno":
+                                    c.setBackground(new Color(255, 193, 7)); // 🟠 ORANGE
+                                    c.setForeground(Color.BLACK);
+                                    break;
+
+                                case "U toku":
+                                    c.setBackground(new Color(220, 53, 69)); // 🔴 CRVENA
+                                    c.setForeground(Color.WHITE);
+                                    break;
+
+                                case "Završeno":
+                                    c.setBackground(new Color(40, 167, 69)); // 🟢 ZELENA
+                                    c.setForeground(Color.WHITE);
+                                    break;
+
+                                default:
+                                    c.setBackground(Color.WHITE);
+                                    c.setForeground(Color.BLACK);
+                            }
+                        } else {
+                            c.setBackground(table.getSelectionBackground());
+                            c.setForeground(table.getSelectionForeground());
+                        }
+
+                        setHorizontalAlignment(SwingConstants.CENTER);
+                        return c;
+                    }
+                });
+    }
 
 }
 
