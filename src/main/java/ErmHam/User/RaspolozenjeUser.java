@@ -33,7 +33,7 @@ public class RaspolozenjeUser extends JFrame {
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
-        // 🔧 FIX: Statistika panel mora imati veličinu
+
         Statistika.setPreferredSize(new Dimension(350, 250));
         Statistika.setMinimumSize(new Dimension(350, 250));
         Statistika.setBorder(BorderFactory.createTitledBorder("Statistika raspoloženja"));
@@ -57,7 +57,7 @@ public class RaspolozenjeUser extends JFrame {
         OBRIsIButton.setBackground(new Color(69, 104, 130));
         OBRIsIButton.setForeground(Color.WHITE);
 
-        // 🔧 BITAN REDOSLIJED
+
         loadFromDB();
         ucitajTabelu();
         nacrtajHistogram();
@@ -124,7 +124,7 @@ public class RaspolozenjeUser extends JFrame {
 
         loadFromDB();
         ucitajTabelu();
-        nacrtajHistogram(); // 🔧 FIX
+        nacrtajHistogram();
         clear();
     }
 

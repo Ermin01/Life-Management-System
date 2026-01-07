@@ -24,21 +24,21 @@ public class Splashscreen extends JFrame {
         GlavniprozorPocetkogekrana.setBackground(new Color(69, 104, 130));
         add(GlavniprozorPocetkogekrana);
 
-        // ===== LABELI =====
+
         Erminlabel = new JLabel("ErminHam", SwingConstants.CENTER);
         Erminlabel.setFont(new Font("Segoe UI", Font.BOLD, 42));
         Erminlabel.setForeground(Color.WHITE);
 
         lifesystemlabel = new JLabel("Life Management System", SwingConstants.CENTER);
-        lifesystemlabel.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+        lifesystemlabel.setFont(new Font("Segoe UI", Font.PLAIN, 25));
         lifesystemlabel.setForeground(Color.WHITE);
 
         statusLabel = new JLabel("Inicijalizacija sustava...", SwingConstants.CENTER);
-        statusLabel.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+        statusLabel.setFont(new Font("Segoe UI", Font.PLAIN, 15));
         statusLabel.setForeground(Color.WHITE);
 
         verzija = new JLabel("v1.0", SwingConstants.CENTER);
-        verzija.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+        verzija.setFont(new Font("Segoe UI", Font.BOLD, 18));
         verzija.setForeground(new Color(220, 220, 220));
 
         JPanel center = new JPanel(new GridLayout(4, 1, 0, 1));
@@ -65,7 +65,6 @@ public class Splashscreen extends JFrame {
         startLoading();
     }
 
-    // ===== TIMER =====
     private void startLoading() {
 
         Timer timer = new Timer(40, null);
@@ -93,7 +92,7 @@ public class Splashscreen extends JFrame {
         timer.start();
     }
 
-    // ===== OPEN LOGIN =====
+
     private void openLogin() {
         dispose();
 
