@@ -161,7 +161,7 @@ public class DodajPlaniranjeObroka extends JFrame {
         sorter.setRowFilter(RowFilter.andFilter(filters));
     }
 
-    // ================= CRUD =================
+
 
     public void sacuvajObrok() {
         if (nazivObroka.getText().isEmpty()) {

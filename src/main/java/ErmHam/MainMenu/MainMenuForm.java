@@ -121,7 +121,7 @@ private JPanel wrap(JButton button) {
 
         } else {
 
-            adminPlaceholder.setLayout(new GridLayout(2, 3, 40, 40));
+            adminPlaceholder.setLayout(new GridLayout(2, 3, 40, 20));
 
             adminPlaceholder.add(wrap(podaciORacunuButton));
             adminPlaceholder.add(wrap(PracenjefinancijaButton));

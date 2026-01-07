@@ -59,6 +59,7 @@ public class PregledKorisnika extends JFrame {
         pregledTabele.setShowHorizontalLines(true);
 
         IzvjestajbtnPDF.addActionListener(e -> exportToPDF());
+        obrisiKorisnika.addActionListener(e -> obrisiKorisnika());
 
 
         updateID.setEditable(false);
@@ -253,5 +254,66 @@ public class PregledKorisnika extends JFrame {
     }
 
 
+    private void obrisiKorisnika() {
+
+        if (updateID.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Molimo odaberite korisnika iz tabele!",
+                    "Upozorenje",
+                    JOptionPane.WARNING_MESSAGE
+            );
+            return;
+        }
+
+        int confirm = JOptionPane.showConfirmDialog(
+                this,
+                "Da li ste sigurni da želite obrisati ovog korisnika?",
+                "Potvrda brisanja",
+                JOptionPane.YES_NO_OPTION
+        );
+
+        if (confirm != JOptionPane.YES_OPTION) {
+            return;
+        }
+
+        try {
+            MongoDatabase db = Bazapodataka.getDatabase();
+            MongoCollection<Document> col = db.getCollection("users");
+
+            Document filter = new Document(
+                    "_id",
+                    new org.bson.types.ObjectId(updateID.getText())
+            );
+
+            col.deleteOne(filter);
+
+            // REFRESH
+            loadUsersFromDB();
+            loadTable();
+
+            // RESET POLJA
+            updateID.setText("");
+            updateIme.setText("");
+            updatePassword.setText("");
+            updateRole.setSelectedIndex(0);
+
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Korisnik je uspješno obrisan!",
+                    "Uspjeh",
+                    JOptionPane.INFORMATION_MESSAGE
+            );
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Greška prilikom brisanja korisnika!",
+                    "Greška",
+                    JOptionPane.ERROR_MESSAGE
+            );
+        }
+    }
 
 }

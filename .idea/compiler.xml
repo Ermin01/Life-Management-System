@@ -9,5 +9,8 @@
         <module name="LifeManagementSystem" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="ErmHam" target="17" />
+    </bytecodeTargetLevel>
   </component>
 </project>

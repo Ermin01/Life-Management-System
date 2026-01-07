@@ -7,78 +7,72 @@ import java.awt.*;
 
 public class Splashscreen extends JFrame {
 
-    private JProgressBar progressBar;
+    private JPanel GlavniprozorPocetkogekrana;
+    private JProgressBar progressBarUcitvanje;
+    private JLabel Erminlabel;
+    private JLabel lifesystemlabel;
+    private JLabel verzija;
     private JLabel statusLabel;
 
     public Splashscreen() {
 
-        setUndecorated(true); // bez okvira
-        setSize(600, 350);
+        setUndecorated(true);
+        setSize(700, 400);
         setLocationRelativeTo(null);
-        setLayout(new BorderLayout());
 
-        // ====== BACKGROUND PANEL ======
-        JPanel mainPanel = new JPanel() {
-            @Override
-            protected void paintComponent(Graphics g) {
-                super.paintComponent(g);
+        GlavniprozorPocetkogekrana = new JPanel(new BorderLayout());
+        GlavniprozorPocetkogekrana.setBackground(new Color(69, 104, 130));
+        add(GlavniprozorPocetkogekrana);
 
-                // Gradient background
-                Graphics2D g2 = (Graphics2D) g;
-                GradientPaint gp = new GradientPaint(
-                        0, 0, new Color(52, 152, 219),
-                        0, getHeight(), new Color(41, 128, 185)
-                );
-                g2.setPaint(gp);
-                g2.fillRect(0, 0, getWidth(), getHeight());
-            }
-        };
-        mainPanel.setLayout(null);
-        add(mainPanel);
+        // ===== LABELI =====
+        Erminlabel = new JLabel("ErminHam", SwingConstants.CENTER);
+        Erminlabel.setFont(new Font("Segoe UI", Font.BOLD, 42));
+        Erminlabel.setForeground(Color.WHITE);
 
-        // ====== TITLE ======
-        JLabel title = new JLabel("Life Management System");
-        title.setForeground(Color.WHITE);
-        title.setFont(new Font("Segoe UI", Font.BOLD, 26));
-        title.setBounds(130, 40, 400, 40);
-        mainPanel.add(title);
+        lifesystemlabel = new JLabel("Life Management System", SwingConstants.CENTER);
+        lifesystemlabel.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+        lifesystemlabel.setForeground(Color.WHITE);
 
-        // ====== SUBTITLE ======
-        JLabel subtitle = new JLabel("Organize • Track • Improve");
-        subtitle.setForeground(new Color(220, 230, 240));
-        subtitle.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-        subtitle.setBounds(200, 85, 300, 30);
-        mainPanel.add(subtitle);
-
-        // ====== STATUS TEXT ======
-        statusLabel = new JLabel("Loading modules...");
-        statusLabel.setForeground(Color.WHITE);
+        statusLabel = new JLabel("Inicijalizacija sustava...", SwingConstants.CENTER);
         statusLabel.setFont(new Font("Segoe UI", Font.PLAIN, 14));
-        statusLabel.setBounds(220, 200, 250, 25);
-        mainPanel.add(statusLabel);
+        statusLabel.setForeground(Color.WHITE);
 
-        // ====== PROGRESS BAR ======
-        progressBar = new JProgressBar();
-        progressBar.setBounds(120, 230, 360, 22);
-        progressBar.setMinimum(0);
-        progressBar.setMaximum(100);
-        progressBar.setValue(0);
-        progressBar.setBorderPainted(false);
-        progressBar.setForeground(new Color(46, 204, 113));
-        progressBar.setBackground(new Color(69, 104, 130));
-        mainPanel.add(progressBar);
+        verzija = new JLabel("v1.0", SwingConstants.CENTER);
+        verzija.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+        verzija.setForeground(new Color(220, 220, 220));
+
+        JPanel center = new JPanel(new GridLayout(4, 1, 0, 1));
+        center.setOpaque(false);
+        center.add(Erminlabel);
+        center.add(lifesystemlabel);
+        center.add(statusLabel);
+        center.add(verzija);
+
+        GlavniprozorPocetkogekrana.add(center, BorderLayout.CENTER);
+
+        // ===== PROGRESS BAR =====
+        progressBarUcitvanje = new JProgressBar(0, 100);
+        progressBarUcitvanje.setValue(0);
+        progressBarUcitvanje.setStringPainted(true);
+        progressBarUcitvanje.setForeground(new Color(52, 152, 219)); // PLAVA
+        progressBarUcitvanje.setBackground(new Color(220, 230, 240));
+        progressBarUcitvanje.setBorder(
+                BorderFactory.createEmptyBorder(10, 30, 20, 30)
+        );
+
+        GlavniprozorPocetkogekrana.add(progressBarUcitvanje, BorderLayout.SOUTH);
 
         startLoading();
     }
 
-    // ====== LOADING LOGIC ======
+    // ===== TIMER =====
     private void startLoading() {
 
         Timer timer = new Timer(40, null);
 
         timer.addActionListener(e -> {
-            int value = progressBar.getValue() + 1;
-            progressBar.setValue(value);
+            int value = progressBarUcitvanje.getValue() + 1;
+            progressBarUcitvanje.setValue(value);
 
             if (value < 30) {
                 statusLabel.setText("Inicijalizacija sustava...");
@@ -99,9 +93,9 @@ public class Splashscreen extends JFrame {
         timer.start();
     }
 
-    // ====== OPEN LOGIN ======
+    // ===== OPEN LOGIN =====
     private void openLogin() {
-        dispose(); // zatvori splash
+        dispose();
 
         JFrame frame = new JFrame("Life Management System");
         frame.setContentPane(new Loginform().Glavniprozor());
