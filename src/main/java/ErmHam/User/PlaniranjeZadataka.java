@@ -82,6 +82,11 @@ public class PlaniranjeZadataka extends  JFrame {
         ExportPDF.setForeground(Color.WHITE);
 
 
+        aktivnoButton.addActionListener(e -> filtrirajPoStatusu("Aktivno"));
+        uTokubutton.addActionListener(e -> filtrirajPoStatusu("U toku"));
+        zavreseniButton.addActionListener(e -> filtrirajPoStatusu("Završeno"));
+        SortNovijeStarije.addActionListener(e -> resetFilter());
+        ExportPDF.addActionListener(e -> exportToPDF());
 
 
 
@@ -328,6 +333,135 @@ public class PlaniranjeZadataka extends  JFrame {
                     }
                 });
     }
+
+
+    private void filtrirajPoStatusu(String status) {
+
+        DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("Naziv zadatka");
+        model.addColumn("Opis zadatka");
+        model.addColumn("Datum");
+        model.addColumn("Prioritet");
+        model.addColumn("Status");
+
+        for (PlaniranjeZad z : planiranjeZad) {
+            if (z.getStatus().equals(status)) {
+                model.addRow(new Object[]{
+                        z.getNazivZadatka(),
+                        z.getDodajOpisZadatka(),
+                        z.getDatum(),
+                        z.getPrioritet(),
+                        z.getStatus()
+                });
+            }
+        }
+
+        planiranjezadatkaTable.setModel(model);
+        bojastatusa();
+    }
+    private void resetFilter() {
+        loadFromDB();
+        UcitajtabeluZadaci();
+        bojastatusa();
+    }
+
+    private void exportToPDF() {
+        try {
+            JFileChooser chooser = new JFileChooser();
+            chooser.setSelectedFile(new java.io.File("PlaniranjeZadataka.pdf"));
+
+            int option = chooser.showSaveDialog(this);
+            if (option != JFileChooser.APPROVE_OPTION) return;
+
+            String path = chooser.getSelectedFile().getAbsolutePath();
+
+            com.itextpdf.text.Document document =
+                    new com.itextpdf.text.Document(com.itextpdf.text.PageSize.A4.rotate());
+
+            com.itextpdf.text.pdf.PdfWriter.getInstance(
+                    document,
+                    new java.io.FileOutputStream(path)
+            );
+
+            document.open();
+
+            // ===== NASLOV =====
+            com.itextpdf.text.Font titleFont =
+                    new com.itextpdf.text.Font(
+                            com.itextpdf.text.Font.FontFamily.HELVETICA,
+                            18,
+                            com.itextpdf.text.Font.BOLD
+                    );
+
+            com.itextpdf.text.Paragraph title =
+                    new com.itextpdf.text.Paragraph("Planiranje Zadataka", titleFont);
+
+            title.setAlignment(com.itextpdf.text.Element.ALIGN_CENTER);
+            document.add(title);
+            document.add(new com.itextpdf.text.Paragraph(" "));
+
+            // ===== TABELA =====
+            com.itextpdf.text.pdf.PdfPTable table =
+                    new com.itextpdf.text.pdf.PdfPTable(5);
+
+            table.setWidthPercentage(100);
+            table.setSpacingBefore(10f);
+
+            addHeader(table, "Naziv");
+            addHeader(table, "Opis");
+            addHeader(table, "Datum");
+            addHeader(table, "Prioritet");
+            addHeader(table, "Status");
+
+            for (int i = 0; i < planiranjezadatkaTable.getRowCount(); i++) {
+                for (int j = 0; j < planiranjezadatkaTable.getColumnCount(); j++) {
+                    table.addCell(planiranjezadatkaTable.getValueAt(i, j).toString());
+                }
+            }
+
+            document.add(table);
+            document.close();
+
+            JOptionPane.showMessageDialog(
+                    this,
+                    "PDF uspješno exportovan!",
+                    "Export PDF",
+                    JOptionPane.INFORMATION_MESSAGE
+            );
+
+            Desktop.getDesktop().open(new java.io.File(path));
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Greška prilikom exporta PDF-a!",
+                    "Greška",
+                    JOptionPane.ERROR_MESSAGE
+            );
+        }
+    }
+
+    private void addHeader(com.itextpdf.text.pdf.PdfPTable table, String text) {
+        com.itextpdf.text.Font font =
+                new com.itextpdf.text.Font(
+                        com.itextpdf.text.Font.FontFamily.HELVETICA,
+                        12,
+                        com.itextpdf.text.Font.BOLD
+                );
+
+        com.itextpdf.text.pdf.PdfPCell cell =
+                new com.itextpdf.text.pdf.PdfPCell(
+                        new com.itextpdf.text.Phrase(text, font)
+                );
+
+        cell.setHorizontalAlignment(com.itextpdf.text.Element.ALIGN_CENTER);
+        cell.setBackgroundColor(new com.itextpdf.text.BaseColor(220, 220, 220));
+        cell.setPadding(8);
+
+        table.addCell(cell);
+    }
+
 
 }
 

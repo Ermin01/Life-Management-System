@@ -1,5 +1,5 @@
 package ErmHam.MainMenu;
-import ErmHam.PlaniranjeZad;
+import ErmHam.User.RaspolozenjeUser;
 import ErmHam.User.PlaniranjeZadataka;
 import com.formdev.flatlaf.extras.FlatSVGIcon;
 
@@ -25,6 +25,9 @@ public class MainMenuForm {
     private JButton odjaviseButton;
     private JButton UcenjeButton;
     private JButton PlaniranjeZadButton;
+
+    private JButton Raspolozenjebutton;
+
     private String role;
 
 
@@ -92,6 +95,15 @@ public class MainMenuForm {
                 new FlatSVGIcon("icons/taskzad.svg", 24, 24)
         );
 
+        Raspolozenjebutton.setBackground(new Color(69, 104, 130));
+        Raspolozenjebutton.setBorder(BorderFactory.createEmptyBorder(20, 40, 20, 40));
+        Raspolozenjebutton.setIcon(
+                new FlatSVGIcon("icons/mood.svg", 24, 24)
+        );
+
+
+
+
     }
 
 private JPanel wrap(JButton button) {
@@ -104,7 +116,7 @@ private JPanel wrap(JButton button) {
 
         adminPlaceholder.removeAll();
 //        adminPlaceholder.setOpaque(false);
-        adminPlaceholder.setLayout(new GridLayout(3, 3, 40, 40));
+        adminPlaceholder.setLayout(new GridLayout(5, 5, 0, 0));
 
         if ("SUPERADMIN".equals(role)) {
 
@@ -117,11 +129,11 @@ private JPanel wrap(JButton button) {
             adminPlaceholder.add(wrap(fitnesPlaniranjeButton));
             adminPlaceholder.add(wrap(PlaniranjeZadButton));
             adminPlaceholder.add(wrap(UcenjeButton));
-
+            adminPlaceholder.add(wrap(Raspolozenjebutton));
 
         } else {
 
-            adminPlaceholder.setLayout(new GridLayout(2, 3, 40, 20));
+            adminPlaceholder.setLayout(new GridLayout(4, 4, 0, 0));
 
             adminPlaceholder.add(wrap(podaciORacunuButton));
             adminPlaceholder.add(wrap(PracenjefinancijaButton));
@@ -129,6 +141,7 @@ private JPanel wrap(JButton button) {
             adminPlaceholder.add(wrap(fitnesPlaniranjeButton));
             adminPlaceholder.add(wrap(PlaniranjeZadButton));
             adminPlaceholder.add(wrap(UcenjeButton));
+            adminPlaceholder.add(wrap(Raspolozenjebutton));
 
         }
 
@@ -189,6 +202,16 @@ private JPanel wrap(JButton button) {
                 new PlaniranjeZadataka().setVisible(true);
             }
         });
+
+        Raspolozenjebutton.addActionListener(e->{
+            if("SUPERADMIN".equals(role)){
+                new RaspolozenjapregledAdmin().setVisible(true);
+            }else{
+                new RaspolozenjeUser().setVisible(true);
+            }
+        });
+
+
 
 
 

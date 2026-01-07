@@ -306,7 +306,7 @@ public class DodajPlaniranjeObroka extends JFrame {
         );
 
         if (potvrda != JOptionPane.YES_OPTION) {
-            return; // korisnik je kliknuo NO
+            return;
         }
 
         MongoDatabase db = Bazapodataka.getDatabase();

@@ -30,6 +30,9 @@ public class UcenjePlanerAdmin extends JFrame {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         pretrazivnje.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        obrisiButton.setBorder(BorderFactory.createEmptyBorder(13, 13, 13,13));
+        obrisiButton.setBackground(new Color(69, 104, 130));
+        obrisiButton.setForeground(Color.WHITE);
 
         Slika = new JLabel(
                 new ImageIcon(this.getClass().getResource("/Pretrazivanje.png"))
@@ -49,9 +52,66 @@ public class UcenjePlanerAdmin extends JFrame {
                 pretrazi();
             }
         });
+        obrisiButton.addActionListener(e -> obrisiPlanUcenja());
     }
 
-    // ================= UCITAVANJE =================
+
+    private void obrisiPlanUcenja() {
+
+        int selectedRow = PrikazUcenja.getSelectedRow();
+
+        if (selectedRow == -1) {
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Molimo označite jedan red u tabeli!",
+                    "Upozorenje",
+                    JOptionPane.WARNING_MESSAGE
+            );
+            return;
+        }
+
+        // Ako je sorter aktivan – moramo konvertovati indeks
+        int modelRow = PrikazUcenja.convertRowIndexToModel(selectedRow);
+
+        DefaultTableModel model =
+                (DefaultTableModel) PrikazUcenja.getModel();
+
+        String korisnik = model.getValueAt(modelRow, 0).toString();
+        String predmet  = model.getValueAt(modelRow, 1).toString();
+        String vrijeme  = model.getValueAt(modelRow, 3).toString();
+
+        int confirm = JOptionPane.showConfirmDialog(
+                this,
+                "Da li ste sigurni da želite obrisati plan?\n\n"
+                        + "Korisnik: " + korisnik + "\n"
+                        + "Predmet: " + predmet,
+                "Potvrda brisanja",
+                JOptionPane.YES_NO_OPTION
+        );
+
+        if (confirm != JOptionPane.YES_OPTION) return;
+
+        MongoCollection<Document> col =
+                Bazapodataka.getDatabase()
+                        .getCollection("userucenja_paner");
+
+        // ⚠️ Filter – biramo JEDINSTVENU kombinaciju
+        Document filter = new Document()
+                .append("predmet", predmet)
+                .append("vrijemepodanu", vrijeme);
+
+        col.deleteOne(filter);
+
+        // 🔄 REFRESH
+        model.removeRow(modelRow);
+
+        JOptionPane.showMessageDialog(
+                this,
+                "Plan učenja uspješno obrisan!",
+                "Uspjeh",
+                JOptionPane.INFORMATION_MESSAGE
+        );
+    }
 
     private void ucitajSvePlanove() {
 

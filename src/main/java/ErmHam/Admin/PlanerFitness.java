@@ -31,7 +31,7 @@ public class PlanerFitness extends JFrame {
         setSize(400, 400);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-
+        setResizable(false);
 
         Image icon = new ImageIcon(
                 Main.class.getResource("/imgdeskop.jpg")
@@ -117,7 +117,7 @@ public class PlanerFitness extends JFrame {
             int visinaCm = Integer.parseInt(visina.getText());
             double tezinaKg = Double.parseDouble(tezina.getText());
 
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
             Date datumDodjele = sdf.parse(datum.getText());
 
             MongoDatabase db = Bazapodataka.getDatabase();
@@ -141,7 +141,7 @@ public class PlanerFitness extends JFrame {
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Visina i težina moraju biti brojevi!");
         } catch (ParseException e) {
-            JOptionPane.showMessageDialog(this, "Datum mora biti u formatu yyyy-MM-dd!");
+            JOptionPane.showMessageDialog(this, "Datum mora biti u formatu dd-MM-yyyy!");
         }
     }
 

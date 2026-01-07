@@ -58,6 +58,10 @@ public class Pracenjefinancija extends JFrame {
         tipTransakcijeBox.addItem("Prihodi");
         tipTransakcijeBox.addItem("Rashodi");
 
+
+
+
+
         katagroijaBox.addItem("Odaberi");
         katagroijaBox.addItem("Hrana");
         katagroijaBox.addItem("Računi");
