@@ -1,6 +1,7 @@
 package ErmHam.User;
 
 import ErmHam.Database.Bazapodataka;
+import ErmHam.Main;
 import ErmHam.UserSession;
 import ErmHam.Users;
 import com.mongodb.client.MongoCollection;
@@ -38,6 +39,12 @@ public class FitnesplanerUser extends JFrame {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setResizable(false);
         zatvoriButton.addActionListener(e -> dispose());
+
+        Image icon = new ImageIcon(
+                Main.class.getResource("/imgdeskop.jpg")
+        ).getImage();
+
+        setIconImage(icon);
 
         ucitajPlanZaUsera();
 

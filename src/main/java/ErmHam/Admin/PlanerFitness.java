@@ -1,6 +1,7 @@
 package ErmHam.Admin;
 
 import ErmHam.Database.Bazapodataka;
+import ErmHam.Main;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
@@ -25,11 +26,18 @@ public class PlanerFitness extends JFrame {
     private JTextField datum;
 
     public PlanerFitness(){
-        setTitle("Praćenje financija");
+        setTitle("FITNES");
         setContentPane(PlanerFitn);
         setSize(400, 400);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+
+        Image icon = new ImageIcon(
+                Main.class.getResource("/imgdeskop.jpg")
+        ).getImage();
+
+        setIconImage(icon);
 
 //        comboBOX
         comboBoxPlantreniga.addItem("Odaberi");

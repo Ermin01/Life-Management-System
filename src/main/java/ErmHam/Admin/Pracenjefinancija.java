@@ -1,6 +1,7 @@
 package ErmHam.Admin;
 
 import ErmHam.Database.Bazapodataka;
+import ErmHam.Main;
 import ErmHam.Transakcija;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
@@ -45,6 +46,13 @@ public class Pracenjefinancija extends JFrame {
         setSize(900, 650);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+
+        Image icon = new ImageIcon(
+                Main.class.getResource("/imgdeskop.jpg")
+        ).getImage();
+
+        setIconImage(icon);
 
         tipTransakcijeBox.addItem("Odaberi");
         tipTransakcijeBox.addItem("Prihodi");

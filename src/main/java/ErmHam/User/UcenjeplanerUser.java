@@ -2,6 +2,7 @@ package ErmHam.User;
 
 import ErmHam.Admin.Ucenje;
 import ErmHam.Database.Bazapodataka;
+import ErmHam.Main;
 import ErmHam.UserSession;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
@@ -47,6 +48,12 @@ public class UcenjeplanerUser extends JFrame {
         initComboboxes();
         refreshUI();
         popuniField();
+
+        Image icon = new ImageIcon(
+                Main.class.getResource("/imgdeskop.jpg")
+        ).getImage();
+
+        setIconImage(icon);
 
 
         Napomena.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));

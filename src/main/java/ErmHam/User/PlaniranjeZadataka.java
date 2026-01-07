@@ -1,6 +1,7 @@
 package ErmHam.User;
 
 import ErmHam.Database.Bazapodataka;
+import ErmHam.Main;
 import ErmHam.PlaniranjeZad;
 import ErmHam.UserSession;
 import com.formdev.flatlaf.extras.FlatSVGIcon;
@@ -45,6 +46,11 @@ public class PlaniranjeZadataka extends  JFrame {
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
+        Image icon = new ImageIcon(
+                Main.class.getResource("/imgdeskop.jpg")
+        ).getImage();
+
+        setIconImage(icon);
 
 
         dodajZadatakButton.setBorder(BorderFactory.createEmptyBorder(13, 13, 13,13));

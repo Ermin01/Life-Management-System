@@ -106,7 +106,7 @@
                 <properties>
                   <font name="JetBrains Mono" size="14" style="1"/>
                   <foreground color="-855041"/>
-                  <text value="PLANIRANJE UČENJA"/>
+                  <text value="PLANIRANJE ZADATAKA"/>
                 </properties>
               </component>
             </children>

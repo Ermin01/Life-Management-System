@@ -1,6 +1,7 @@
 package ErmHam.Admin;
 
 import ErmHam.Database.Bazapodataka;
+import ErmHam.Main;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
@@ -24,6 +25,12 @@ public class DodajKorisnika extends JFrame {
         setLocationRelativeTo(null);
         setResizable(false);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+
+        Image icon = new ImageIcon(
+                Main.class.getResource("/imgdeskop.jpg")
+        ).getImage();
+        setIconImage(icon);
 
         comboBoxRole.addItem("Odaberi");
         comboBoxRole.addItem("USER");
@@ -76,4 +83,7 @@ public class DodajKorisnika extends JFrame {
         JOptionPane.showMessageDialog(this, "Korisnik uspješno sačuvan!");
         dispose(); // zatvori prozor
     }
+
+
+
 }

@@ -1,6 +1,7 @@
 package ErmHam.User;
 
 import ErmHam.Database.Bazapodataka;
+import ErmHam.Main;
 import ErmHam.UserSession;
 import ErmHam.Users;
 
@@ -32,6 +33,11 @@ public class Podacioracunu extends JFrame {
         ucitajPodatke();
         Akcija();
 
+        Image icon = new ImageIcon(
+                Main.class.getResource("/imgdeskop.jpg")
+        ).getImage();
+
+        setIconImage(icon);
 
         userName.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
         Role.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));

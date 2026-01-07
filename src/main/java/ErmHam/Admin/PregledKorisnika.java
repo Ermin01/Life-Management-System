@@ -1,6 +1,7 @@
 package ErmHam.Admin;
 
 import ErmHam.Database.Bazapodataka;
+import ErmHam.Main;
 import ErmHam.Users;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
@@ -43,6 +44,13 @@ public class PregledKorisnika extends JFrame {
         loadUsersFromDB(); // ⬅ učitaj iz baze
         loadTable();       // ⬅ napuni tabelu
         initTableClick();
+
+
+        Image icon = new ImageIcon(
+                Main.class.getResource("/imgdeskop.jpg")
+        ).getImage();
+
+        setIconImage(icon);
 
         pregledTabele.setRowHeight(28);
         pregledTabele.setFont(new Font("Segoe UI", Font.PLAIN, 14));

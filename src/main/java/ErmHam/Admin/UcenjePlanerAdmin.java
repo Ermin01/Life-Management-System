@@ -1,6 +1,7 @@
 package ErmHam.Admin;
 
 import ErmHam.Database.Bazapodataka;
+import ErmHam.Main;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
@@ -9,6 +10,7 @@ import org.bson.types.ObjectId;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
+import java.awt.*;
 
 public class UcenjePlanerAdmin extends JFrame {
 
@@ -21,7 +23,7 @@ public class UcenjePlanerAdmin extends JFrame {
 
     public UcenjePlanerAdmin() {
 
-        setTitle("Planer učenja – Admin");
+        setTitle("Pregled učenja – Admin");
         setContentPane(UcenjeAdminplaner);
         setSize(1100, 450);
         setLocationRelativeTo(null);
@@ -32,6 +34,12 @@ public class UcenjePlanerAdmin extends JFrame {
         Slika = new JLabel(
                 new ImageIcon(this.getClass().getResource("/Pretrazivanje.png"))
         );
+
+        Image icon = new ImageIcon(
+                Main.class.getResource("/imgdeskop.jpg")
+        ).getImage();
+
+        setIconImage(icon);
 
         ucitajSvePlanove();
 

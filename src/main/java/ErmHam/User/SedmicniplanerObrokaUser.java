@@ -1,6 +1,7 @@
 package ErmHam.User;
 
 import ErmHam.Database.Bazapodataka;
+import ErmHam.Main;
 import ErmHam.UserSession;
 
 import com.mongodb.client.MongoCollection;
@@ -41,11 +42,17 @@ public class SedmicniplanerObrokaUser extends JFrame {
 
     public SedmicniplanerObrokaUser() {
 
-        setTitle("Sedmični planer obroka");
+        setTitle("Sedmični  obrok");
         setContentPane(SedmicnipanelGlava);
         setSize(1100, 450);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+        Image icon = new ImageIcon(
+                Main.class.getResource("/imgdeskop.jpg")
+        ).getImage();
+
+        setIconImage(icon);
 
         KalorijaLabel.setText("Ukupno kalorija: 0 kcal");
         ProteiniLabel.setText("Ukupno proteina: 0 g");

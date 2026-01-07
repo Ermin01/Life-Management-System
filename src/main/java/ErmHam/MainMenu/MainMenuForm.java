@@ -115,7 +115,7 @@ private JPanel wrap(JButton button) {
             adminPlaceholder.add(wrap(PracenjefinancijaButton));
             adminPlaceholder.add(wrap(PracenjenavikaObroka));
             adminPlaceholder.add(wrap(fitnesPlaniranjeButton));
-
+            adminPlaceholder.add(wrap(PlaniranjeZadButton));
             adminPlaceholder.add(wrap(UcenjeButton));
 
 
@@ -127,8 +127,9 @@ private JPanel wrap(JButton button) {
             adminPlaceholder.add(wrap(PracenjefinancijaButton));
             adminPlaceholder.add(wrap(PracenjenavikaObroka));
             adminPlaceholder.add(wrap(fitnesPlaniranjeButton));
-            adminPlaceholder.add(wrap(UcenjeButton));
             adminPlaceholder.add(wrap(PlaniranjeZadButton));
+            adminPlaceholder.add(wrap(UcenjeButton));
+
         }
 
         adminPlaceholder.revalidate();
@@ -183,7 +184,7 @@ private JPanel wrap(JButton button) {
 
         PlaniranjeZadButton.addActionListener(e->{
             if("SUPERADMIN".equals(role)){
-                new UcenjePlanerAdmin().setVisible(true);
+                new PregledZadatakaUsera().setVisible(true);
             }else{
                 new PlaniranjeZadataka().setVisible(true);
             }
